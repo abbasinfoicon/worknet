@@ -19,7 +19,7 @@ const RouterMenu = () => {
       <Route path='/team' element={<Team />} />
       <Route path='/kontakt' element={<Kontakt />} />
       <Route path='/job' element={<Jobportal />} />
-      <Route path='/job-details' element={<JobportalDetails />} />
+      <Route path='/job/:slug' element={<JobportalDetails />} />
 
       <Route path='/coming-soon' element={<ComingSoon />} />
       <Route path='*' element={<PageNotFound />} />

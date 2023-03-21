@@ -109,6 +109,9 @@
 
     &-apply {
         padding: 3.438rem;
+        position: sticky;
+        top: 90px;
+
 
         @media (max-width: 767px) {
             padding: 3rem;
@@ -177,10 +180,15 @@
                 @media (max-width: 991px) {
                     height: 50px;
                 }
+
                 @media (max-width: 767px) {
                     height: 38px;
                 }
             }
         }
     }
+}
+
+.pos_rel {
+    position: relative;
 }

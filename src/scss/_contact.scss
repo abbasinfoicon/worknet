@@ -55,6 +55,12 @@
             }
         }
 
+        select {
+            background-image: url('https://i.imgur.com/vgs14Nv.png');
+            background-repeat: no-repeat;
+            background-position: center right 22px;
+        }
+
         textarea {
             height: 210px;
         }
@@ -158,5 +164,49 @@
 
     @media (max-width: 1024px) {
         padding-left: 0;
+    }
+}
+
+.contact-form {
+    .css-qbdosj-Input {
+        input {
+            height: 50px;
+        }
+    }
+
+    .css-wsp0cs-MultiValueGeneric {
+        font-size: 1rem;
+        color: $lgtblack;
+    }
+
+    .css-1dimb5e-singleValue {
+        font-size: 1.25rem;
+        color: $lgtblack;
+        padding: 12px 24px;
+    }
+
+    .css-1jqq78o-placeholder {
+        font-size: 1.25rem;
+        color: lighten($lgtblack, 50%);
+        padding: 12px 24px;
+    }
+
+    .css-13cymwt-control {
+        background-color: #FAFAFA;
+        border: 1px solid #D7D7D7;
+    }
+
+    .css-3w2yfm-ValueContainer,
+    .css-qbdosj-Input {
+        padding: 0 20px;
+    }
+
+    .css-1fdsijx-ValueContainer {
+        padding: 0;
+    }
+
+    .css-1p3m7a8-multiValue {
+        background: transparent;
+        margin: 0;
     }
 }

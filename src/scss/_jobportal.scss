@@ -24,6 +24,8 @@
 
     .contact-form {
         margin-top: 0;
+        position: sticky;
+        top: 90px;
 
         .title {
 
@@ -69,6 +71,7 @@
             color: $lgtblack;
             @include barlow(bold);
             margin-bottom: 20px;
+            padding-right: 110px;
         }
 
         ul {
@@ -91,27 +94,23 @@
             }
         }
 
-        a {
-            &.department {
-                color: $lgtblack;
-                background-color: #ebebeb;
-                position: absolute;
-                right: 48px;
-                top: 48px;
-                padding: 3px 10px;
+        .department {
+            color: $lgtblack;
+            background-color: #ebebeb;
+            position: absolute;
+            right: 48px;
+            top: 48px;
+            padding: 3px 10px;
 
-                @media (max-width: 767px) {
-                    right: 30px;
-                    top: 30px;
-                }
-
-                @media (max-width: 425px) {
-                    right: 15px;
-                    top: 15px;
-                }
+            @media (max-width: 767px) {
+                right: 30px;
+                top: 30px;
             }
 
-            &.cutsom-btn {}
+            @media (max-width: 425px) {
+                right: 15px;
+                top: 15px;
+            }
         }
     }
 }

@@ -1,11 +1,21 @@
-import React from 'react'
+import React, { useState } from 'react'
 import { Helmet } from 'react-helmet'
 import { Link } from 'react-router-dom'
+import Select from 'react-select';
 import Banner from '../components/template/Banner'
 import WorkTogether from '../components/template/WorkTogether'
 import WorkWithUs from '../components/template/WorkWithUs'
 
+const theme = [
+  { value: 'dienstleistung', label: 'Dienstleistung' },
+  { value: 'elektriker', label: 'Elektriker/in' },
+  { value: 'kaufmannisch', label: 'Kaufmännisch' },
+  { value: 'maler', label: 'Maler/in' },
+];
+
 const Kontakt = () => {
+  const [selectedOption, setSelectedOption] = useState(null);
+
   return (
     <div className='kontakt'>
       <Helmet>
@@ -14,7 +24,7 @@ const Kontakt = () => {
 
       <Banner page={"contact"} />
 
-    
+
       <section className="contact bg-gray">
         <div className="container-fluid container-custom">
           <div className="row align-items-end">
@@ -133,12 +143,12 @@ const Kontakt = () => {
                     <div className="col-md-6 wow slideInUp">
                       <div className="form-group">
                         <label htmlFor="">Thema</label>
-                        <select name="" id="" className="form-control">
-                          <option value="">Bitte auswählen</option>
-                          <option value="">Bitte auswählen</option>
-                          <option value="">Bitte auswählen</option>
-                          <option value="">Bitte auswählen</option>
-                        </select>
+                        <Select
+                          defaultValue={selectedOption}
+                          onChange={setSelectedOption}
+                          options={theme}
+                          placeholder="Bitte auswählen"
+                        />
                       </div>
                     </div>
                   </div>

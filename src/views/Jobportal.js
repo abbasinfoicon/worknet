@@ -1,10 +1,41 @@
 import React, { useEffect, useState } from 'react'
 import { Helmet } from 'react-helmet'
 import { Link } from 'react-router-dom'
+import Select from 'react-select';
 import axiosCall from '../components/Axios'
 import Breadcreamb from '../components/parts/Breadcreamb'
 
+const employ = [
+  { value: 'festanstellung', label: 'Festanstellung' },
+  { value: 'fulltime', label: 'Full time' },
+  { value: 'minijob', label: 'Mini-job' },
+  { value: 'nightshift', label: 'Night shifts' },
+  { value: 'ptflexible', label: 'Part time - flexible' },
+  { value: 'ptshift', label: 'Part time - shift' },
+  { value: 'ptafternoon', label: 'Part time in the afternoon' },
+  { value: 'ptevening', label: 'Part time in the evening' },
+  { value: 'ptmonring', label: 'Part time in the morning' },
+  { value: 'praktikum', label: 'Praktikum' },
+  { value: 'shift', label: 'Shift' },
+  { value: 'weekendshift', label: 'Shift / Night shifts / Weekends' },
+  { value: 'teilzeit', label: 'Teilzeit' },
+  { value: 'temporär', label: 'Temporär' },
+  { value: 'temporör', label: 'Temporör' },
+  { value: 'unbefristet', label: 'Unbefristet' },
+  { value: 'vollzeit', label: 'Vollzeit, Teilzeit möglich' },
+  { value: 'weekend', label: 'Weekend' },
+  { value: 'wfh', label: 'Work from home/telework' },
+];
+const department = [
+  { value: 'dienstleistung', label: 'Dienstleistung' },
+  { value: 'elektriker', label: 'Elektriker/in' },
+  { value: 'kaufmannisch', label: 'Kaufmännisch' },
+  { value: 'maler', label: 'Maler/in' },
+];
+
 const Jobportal = () => {
+  const [empOption, setEmpOption] = useState(null);
+  const [depOption, setDepOption] = useState(null);
   const [isLoading, setLoading] = useState(true);
   const [job, setJob] = useState([]);
 
@@ -36,14 +67,14 @@ const Jobportal = () => {
                     job.map((item, index) => {
                       return (
                         <div className="jobportal-list wow slideInUp" key={index}>
-                          <h2>Job Titel</h2>
-                          <Link to="/" className="department">Abteilung</Link>
+                          <h2>{item.title}</h2>
+                          <Link to="/" className="department">{item.department}</Link>
                           <ul>
-                            <li><i className="fa-solid fa-location-dot"></i> Einsatzort</li>
-                            <li><i className="fa-regular fa-clock"></i> Art der Anstellung</li>
+                            <li><i className="fa-solid fa-location-dot"></i> {item.location}</li>
+                            <li><i className="fa-regular fa-clock"></i> {item.enployment}</li>
                           </ul>
 
-                          <Link to="/job-details" className="cutsom-btn hover">Jetzt Bewerben <i className="fa-solid fa-arrow-right"></i></Link>
+                          <Link to={`/job/${item.slug}`} className="cutsom-btn hover">Jetzt Bewerben <i className="fa-solid fa-arrow-right"></i></Link>
                         </div>
                       )
                     })
@@ -66,18 +97,24 @@ const Jobportal = () => {
                       <input type="text" name="" id="" className="form-control" placeholder="PLZ oder Ort" />
                     </div>
 
-                    <div className="form-group">
-                      <input type="text" name="" id="" className="form-control"
-                        placeholder="Unternehmensbereich/Abteilung" />
+                    <div className='form-group'>
+                      <Select
+                        defaultValue={empOption}
+                        onChange={setEmpOption}
+                        options={employ}
+                        isMulti
+                        placeholder="Unternehmensbereich/Abteilung"
+                      />
                     </div>
 
-                    <div className="form-group">
-                      <select name="" id="" className="form-control">
-                        <option value="">Art der Anstellung</option>
-                        <option value="">Art der Anstellung</option>
-                        <option value="">Art der Anstellung</option>
-                        <option value="">Art der Anstellung</option>
-                      </select>
+                    <div className='form-group'>
+                      <Select
+                        defaultValue={depOption}
+                        onChange={setDepOption}
+                        options={department}
+                        isMulti
+                        placeholder="Art der Anstellung"
+                      />
                     </div>
 
                     <p className="all-fld">Alle Filter entfernen</p>
