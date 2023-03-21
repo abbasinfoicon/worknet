@@ -1,0 +1,175 @@
+.review {
+    .aboutBx-sec {
+        margin-bottom: 0;
+        margin-top: 30px;
+        min-height: 300px;
+
+        @media (max-width: 991px) {
+            margin-top: 15px;
+            min-height: auto;
+        }
+
+        .img-style {
+            width: 66px;
+            height: 66px;
+
+            p {
+                font-size: 1.75rem;
+            }
+        }
+
+        &:hover {
+            scale: 1.05;
+        }
+    }
+
+    &-carousel {
+        padding: 100px 0 0;
+
+        @media (max-width: 1024px) {
+            padding: 50px 0 0;
+        }
+
+        @media (max-width: 767px) {
+            padding: 15px 0;
+        }
+
+        .item {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 190px;
+
+            @media (max-width: 991px) {
+                flex-direction: column;
+            }
+
+            @media (max-width: 1024px) {
+                gap: 50px;
+            }
+
+            @media (max-width: 767px) {
+                gap: 30px;
+            }
+
+            @media (max-width: 425px) {
+                gap: 15px;
+            }
+
+            .img-style {
+                min-width: 548px;
+                max-width: 548px;
+                height: 539px;
+                overflow: hidden;
+                @include border-radius(24px);
+
+                @media (max-width: 991px) {
+                    height: auto;
+                    width: 100%;
+                    min-width: auto;
+                    max-width: fit-content;
+                }
+
+                img {
+                    height: 100%;
+                    object-fit: cover;
+
+                    @media (max-width: 991px) {
+                        height: auto;
+                        width: 100%;
+                    }
+                }
+            }
+        }
+
+        .owl-nav {
+            text-align: center;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+            margin-top: 30px;
+
+            @media (max-width: 767px) {
+                margin-top: 15px;
+            }
+
+            @media (max-width: 425px) {
+                margin-top: 5px;
+            }
+
+            button {
+                width: 68px;
+                height: 68px;
+                background-color: $white !important;
+                border-radius: 100%;
+                font-size: 1.5rem !important;
+                color: $red !important;
+
+                &.disabled {
+                    background-color: transparent !important;
+                    color: lighten($lgtblack, 30%) !important;
+                    cursor: no-drop;
+                }
+            }
+        }
+    }
+
+    &-content {
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+        width: 100%;
+        padding: 0 15px;
+
+        &-say {
+            height: 400px;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+
+            @media (max-width: 991px) {
+                height: auto;
+            }
+
+            p {
+                width: 65%;
+
+                @media (max-width: 767px) {
+                    width: 100%;
+                }
+            }
+
+
+            img {
+                width: auto;
+                max-width: fit-content;
+                margin-left: auto;
+
+                @media (max-width: 767px) {
+                    width: 50px !important;
+                }
+
+                @media (max-width: 425px) {
+                    width: 30px !important;
+                }
+            }
+        }
+
+        p {
+            strong {
+                color: $lgtblack;
+            }
+        }
+    }
+
+    .title {
+        @media (max-width: 767px) {
+            display: block !important;
+
+            h2 {
+                margin-bottom: 25px;
+            }
+        }
+    }
+}

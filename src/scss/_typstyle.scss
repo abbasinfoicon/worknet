@@ -1,0 +1,46 @@
+h1 {
+    font-size: 4rem;
+
+    @media (max-width: 1440px) {
+        font-size: 3.5rem;
+    }
+
+    @media (max-width: 1024px) {
+        font-size: 3rem;
+    }
+
+    @media (max-width: 768px) {
+        font-size: 2.1rem;
+    }
+}
+
+h2 {
+    font-size: 3.5rem;
+
+    @media (max-width: 1440px) {
+        font-size: 3rem;
+    }
+
+    @media (max-width: 1024px) {
+        font-size: 2.1rem;
+    }
+
+    @media (max-width: 768px) {
+        font-size: 1.5rem;
+    }
+}
+
+h3 {
+    font-size: 1.5rem;
+
+    @media (max-width: 768px) {
+        font-size: 1.25rem;
+    }
+}
+
+p,
+li,
+a,
+.cutsom-btn {
+    font-size: 1.25rem;
+}

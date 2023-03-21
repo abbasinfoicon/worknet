@@ -1,0 +1,186 @@
+.jobportal {
+    &.custom-padding {
+        padding: 50px 0;
+
+        @media (max-width: 500px) {
+            padding: 30px 0;
+        }
+    }
+
+    p,
+    h2,
+    h3,
+    li {
+        color: $lgtblack;
+    }
+
+    &-details {
+        .img-style {
+            position: relative;
+            margin-bottom: 3.125rem;
+
+            img {
+                @include border-radius(8px);
+            }
+        }
+
+        .content-style {
+            margin-bottom: 6.25rem;
+
+            h2 {
+                @include barlow(bold);
+                color: $lgtblack;
+                margin-bottom: 3rem;
+            }
+
+            h3 {
+                font-size: 2.5rem;
+                color: $lgtblack;
+                margin-bottom: 1.5rem;
+            }
+
+            p {
+                color: $lgtblack;
+                margin-bottom: 1.875rem;
+            }
+
+            ul {
+                margin-bottom: 3rem;
+
+                &.custom_ul {}
+
+                &.ul1 {
+                    li {
+                        display: flex;
+                        align-items: center;
+                        justify-content: space-between;
+                        margin-bottom: 18px;
+
+                        p {
+                            margin-bottom: 0;
+                            display: flex;
+                            align-items: center;
+                            gap: 15px;
+                        }
+                    }
+                }
+
+                &.ul2 {}
+
+                &.ul3 {
+                    padding-left: 3rem;
+
+                    li {
+                        list-style-type: disc;
+                    }
+                }
+
+                li {
+                    color: $lgtblack;
+                    margin-bottom: 1rem;
+
+                    p {
+                        span {
+                            width: 30px;
+                            height: 30px;
+                            border: 2px solid $red;
+                            color: $red;
+                            @include border-radius(100%);
+                            display: inline-flex;
+                            justify-content: center;
+                            align-items: center;
+                            @include barlow(extrabold);
+                        }
+
+                        i {
+                            color: $red;
+                            width: 30px;
+                            text-align: center;
+                            font-size: 1.875rem;
+                        }
+
+                    }
+
+                    span {}
+                }
+            }
+        }
+    }
+
+    &-apply {
+        padding: 3.438rem;
+
+        @media (max-width: 767px) {
+            padding: 3rem;
+        }
+
+        @media (max-width: 425px) {
+            padding: 1.5rem;
+        }
+
+        h2 {
+            @include barlow(bold);
+            color: $lgtblack;
+            margin-bottom: 1.5rem;
+        }
+
+        p {}
+
+        .contact-form {
+
+            .form-group {
+                label {
+                    font-size: 1rem;
+                }
+
+                select,
+                input {}
+
+                input {}
+
+                &.agreement {
+                    display: flex;
+                    align-items: flex-start;
+                    gap: 15px;
+
+                    #agreement {
+                        height: auto;
+                        position: relative;
+                        top: 5px;
+                        min-width: 20px;
+                        height: 20px;
+                        border-radius: 8px
+                    }
+
+                    label {
+                        display: inline-block;
+                    }
+                }
+            }
+
+            h3 {
+                color: $lgtblack;
+                @include barlow(bold);
+                font-size: 2.25rem;
+            }
+
+            p {}
+
+            #custom-button {
+                width: 12rem;
+                border: none;
+                height: 62px;
+                border-radius: 8px;
+                font-size: 1.25rem;
+                margin-right: 1rem;
+
+                @media (max-width: 991px) {
+                    height: 50px;
+                }
+                @media (max-width: 767px) {
+                    height: 38px;
+                }
+            }
+        }
+    }
+}

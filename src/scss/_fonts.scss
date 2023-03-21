@@ -1,0 +1,83 @@
+// @import url('#{$fontPath}/barlow/https://fonts.googleapis.com/css2?family=Barlow:wght@100;200;300;400;500;600;700;800;900&display=swap');
+
+@font-face {
+  font-family: 'Barlow-black';
+  src: url('#{$fontPath}/barlow/Barlow-Black.woff2') format('woff2'),
+      url('#{$fontPath}/barlow/Barlow-Black.woff') format('woff');
+  font-weight: 900;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Barlow-bold';
+  src: url('#{$fontPath}/barlow/Barlow-Bold.woff2') format('woff2'),
+      url('#{$fontPath}/barlow/Barlow-Bold.woff') format('woff');
+  font-weight: bold;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Barlow-extrabold';
+  src: url('#{$fontPath}/barlow/Barlow-ExtraBold.woff2') format('woff2'),
+      url('#{$fontPath}/barlow/Barlow-ExtraBold.woff') format('woff');
+  font-weight: bold;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Barlow-light';
+  src: url('#{$fontPath}/barlow/Barlow-Light.woff2') format('woff2'),
+      url('#{$fontPath}/barlow/Barlow-Light.woff') format('woff');
+  font-weight: 300;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Barlow-regular';
+  src: url('#{$fontPath}/barlow/Barlow-Regular.woff2') format('woff2'),
+      url('#{$fontPath}/barlow/Barlow-Regular.woff') format('woff');
+  font-weight: normal;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Barlow-extralight';
+  src: url('#{$fontPath}/barlow/Barlow-ExtraLight.woff2') format('woff2'),
+      url('#{$fontPath}/barlow/Barlow-ExtraLight.woff') format('woff');
+  font-weight: 200;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Barlow-medium';
+  src: url('#{$fontPath}/barlow/Barlow-Medium.woff2') format('woff2'),
+      url('#{$fontPath}/barlow/Barlow-Medium.woff') format('woff');
+  font-weight: 500;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Barlow-thin';
+  src: url('#{$fontPath}/barlow/Barlow-Thin.woff2') format('woff2'),
+      url('#{$fontPath}/barlow/Barlow-Thin.woff') format('woff');
+  font-weight: 100;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Barlow-semibold';
+  src: url('#{$fontPath}/barlow/Barlow-SemiBold.woff2') format('woff2'),
+      url('#{$fontPath}/barlow/Barlow-SemiBold.woff') format('woff');
+  font-weight: 600;
+  font-style: normal;
+  font-display: swap;
+}
+

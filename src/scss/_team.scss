@@ -1,0 +1,140 @@
+.team {
+    padding-bottom: 0;
+
+    &-member {
+        display: flex;
+        align-items: center;
+        gap: 35px;
+        margin: 35px;
+
+        @media (max-width: 1199px) {
+            margin: 25px 15px;
+            gap: 25px;
+        }
+
+        @media (max-width: 991px) {
+            margin: 15px 0;
+            gap: 15px;
+        }
+
+        @media (max-width: 500px) {
+            flex-direction: column;
+            padding-bottom: 25px;
+            background-color: $white;
+            @include border-radius(24px);
+            text-align: center;
+        }
+
+        .img-style {
+            position: relative;
+            min-width: 260px;
+            width: 260px;
+            height: 280px;
+            overflow: hidden;
+            @include border-radius(24px);
+            cursor: pointer;
+
+            @media (max-width: 500px) {
+                min-width: auto;
+                width: auto;
+                height: auto;
+            }
+
+            img {
+                height: 100%;
+                object-fit: cover;
+                width: 100%;
+
+                @media (max-width: 500px) {
+                    height: auto;
+                }
+
+                &.hoverImg {
+                    position: absolute;
+                    top: 0;
+                    left: 0;
+                    right: 0;
+                    bottom: 0;
+                    opacity: 0;
+                }
+            }
+
+            .overlay {
+                position: absolute;
+                bottom: -100%;
+                padding: 25px;
+                width: 100%;
+                -webkit-clip-path: polygon(0 0, 100% 22%, 100% 100%, 0% 100%);
+                clip-path: polygon(0 0, 100% 22%, 100% 100%, 0% 100%);
+                background-image: radial-gradient(circle at 171% 12%, rgb(255 255 255 / 50%), rgb(0 0 0 / 50%) 86%);
+                transition: all .3s ease-in-out;
+
+                
+
+                h3,
+                p {
+                    color: $white;
+                    margin-bottom: 0;
+                    text-transform: uppercase;
+                }
+            }
+
+            &:hover {
+                .hoverImg {
+                    opacity: 1;
+                }
+
+                .overlay {
+                    bottom: 0;
+                }
+
+                .statImg {
+                    opacity: 0;
+                }
+            }
+        }
+
+        .details {
+            h3 {
+                color: $red;
+                text-transform: uppercase;
+            }
+
+            p {
+                color: $lgtblack;
+                text-transform: uppercase;
+            }
+
+            a {
+                color: $lgtblack;
+                margin-bottom: 55px;
+                display: block;
+
+                @media (max-width: 767px) {
+                    margin-bottom: 15px;
+                }
+            }
+
+            .social-icon {
+                margin-bottom: 0;
+            }
+
+            ul {
+                @media (min-width: 501px) {
+                    justify-content: flex-start;
+                }
+
+                li {
+                    a {
+                        margin-bottom: 0;
+                        color: $white;
+                        display: flex;
+
+                        i {}
+                    }
+                }
+            }
+
+        }
+    }
+}

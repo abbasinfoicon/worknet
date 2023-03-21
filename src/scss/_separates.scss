@@ -1,0 +1,62 @@
+.separates {
+    padding: 85px 0;
+    overflow-x: hidden;
+
+    @media (max-width: 991px) {
+        padding: 50px 0;
+    }
+
+    @media (max-width: 500px) {
+        padding: 30px 0;
+    }
+
+    &-left {
+        @media (max-width: 991px) {
+            margin-bottom: 50px;
+        }
+
+        .title {
+            h2 {
+                @include barlow(medium);
+                color: $white;
+            }
+        }
+
+        .cutsom {
+            &-btn {
+                &:hover {
+                    color: $white;
+                    border-color: $white;
+                }
+            }
+        }
+    }
+
+    &-img {
+        .img-style {
+            height: 434px;
+            overflow: hidden;
+            @include border-radius(24px);
+
+            @media (min-width: 1440px) {
+                width: 960px;
+            }
+
+            @media (max-width: 991px) {
+                height: auto;
+                width: 100%;
+            }
+
+            img {
+                height: 100%;
+                width: 100%;
+                object-fit: cover;
+
+                @media (max-width: 991px) {
+                    height: auto;
+                    width: 100%;
+                }
+            }
+        }
+    }
+}

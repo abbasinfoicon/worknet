@@ -1,0 +1,300 @@
+{
+    "slider": [
+        {
+            "id": 1,
+            "img": "assets/img/slider1.jpg",
+            "heading": "Willkommen bei worknet ag!",
+            "content": "Wir vernetzen Arbeit und bringen Menschen erfolgreich zusammen.",
+            "page": "job",
+            "pageDec": "Finde Deinen nächsten Job"
+        },
+        {
+            "id": 2,
+            "img": "assets/img/slider2.jpg",
+            "heading": "Job Angebote bringen kaum gute Bewerbungen?",
+            "content": "Wir helfen Dir dabei passende Mitarbeiter:innen zu finden und zu kontaktieren, damit Du offene Stellen in kürzester Zeit besetzen können!",
+            "page": "unternehmen",
+            "pageDec": "Jetzt Starten"
+        },
+        {
+            "id": 3,
+            "img": "assets/img/slider3.jpg",
+            "heading": "Wir wissen wie zeitraubend die Jobsuche sein kann!",
+            "content": "Deshalb übernehmen wir die Arbeit für Dich und bieten Dir Jobs, die zu Deinen Erfahrungen, Wünschen und Gehaltsvorstellungen passen.",
+            "page": "bewerberlnnen",
+            "pageDec": "Jetzt Starten"
+        },
+        {
+            "id": 4,
+            "img": "assets/img/slider4.jpg",
+            "heading": "Lerne die Gesichter hinter worknet ag kennen!",
+            "content": "Entdecke das engagierte Team, das seit 2005 Top-Stellensuchende mit führenden Unternehmen zusammenbringt.",
+            "page": "team",
+            "pageDec": "Jetzt Starten"
+        },
+        {
+            "id": 5,
+            "img": "assets/img/slider5.jpg",
+            "heading": "Kontaktiere Uns!",
+            "content": "Persönlich überprüfte Teilnehmer:innen, die qualifiziert und an Ihrem Angebot interessiert sind.",
+            "page": "kontak",
+            "pageDec": ""
+        }
+    ],
+    "aboutBx": [
+        {
+            "id": 1,
+            "img": "assets/img/business_red.png",
+            "heading": "Vertrauen",
+            "desc": "Vermittlung ist Vertrauenssache – uns ist eine erfolgreiche und nachhaltige Zusammenarbeit auf Vertrauensbasis wichtig, weshalb wir Ihre Informationen diskret behandeln."
+        },
+        {
+            "id": 2,
+            "img": "assets/img/thumbs-up_red.png",
+            "heading": "Engagement",
+            "desc": "Wir setzen uns mit Engagement und Freude ein und legen den Fokus auf das Wesentliche. Unser Anspruch ist dabei, Kunden und Kandidaten auf höchstem Niveau zu beraten."
+        },
+        {
+            "id": 3,
+            "img": "assets/img/user_red.png",
+            "heading": "Menschenbezogenheit",
+            "desc": "Der Mensch steht bei uns im Mittelpunkt unserer Tätigkeit. Humanität, Zuverlässigkeit und persönliche Betreuung sind daher die Leitmotive unseres Handelns."
+        },
+        {
+            "id": 4,
+            "img": "assets/img/puzzle_red.png",
+            "heading": "Flexibilität",
+            "desc": "Da wir grossen Wert auf Flexibilität legen, sind wir stets bestrebt, mit Ihnen gemeinsam individuelle Lösungen zu erarbeiten."
+        }
+    ],
+    "workwith": [
+        {
+            "id": 1,
+            "title": "Langjährige Erfahrungen",
+            "desc": "Seit 2005 widmen wir uns der Vermittlung von Temporär- und Dauerstellen und hatten bereits 533 Vermittlungen im Jahr 2019."
+        },
+        {
+            "id": 2,
+            "title": "Recruiting-Netzwerk",
+            "desc": "In der Region Basel konnten wir ein umfangreiches Recruiting-Netzwerk aufbauen und unsere Personallösungen für unsere Kunden stets erweitern."
+        },
+        {
+            "id": 3,
+            "title": "Top-Personaldienstleister",
+            "desc": "Erhalte von uns hoch qualifiziertes Personal. Wir stützen uns dabei auf bewährte Praktiken der Personalauswahl."
+        },
+        {
+            "id": 4,
+            "title": "Gut vernetzt",
+            "desc": "Mit unseren Kontakten zu vielen namhaften Unternehmen in der Region unterstützen wir Dich bei Ihrer Suche nach einem passenden Job."
+        }
+    ],
+    "review": [
+        {
+            "id": 1,
+            "img": "assets/img/Kundenmaler.jpg",
+            "desc": "«Angenehmes und hilfsbereites Personal. Die worknet ag hat mir immer Einsätze gefunden.»",
+            "name": "D. N.",
+            "designation": "Kundenmaler | temporär seit 2006"
+        },
+        {
+            "id": 2,
+            "img": "assets/img/Elektromonteur.jpg",
+            "desc": "«Le team-worknet est sérieux, sympathique er professionnel. »",
+            "name": "L. G.",
+            "designation": "Elektromonteur | temporär seit 2015"
+        },
+        {
+            "id": 3,
+            "img": "assets/img/img3.jpg",
+            "desc": "«Was ich toll fand, dass man nicht nur irgendeine Stelle für mich gesucht hat, sondern wirklich auf meine bedürnisse eingegangen wurde.»",
+            "name": "M. S.",
+            "designation": "Teamleiter"
+        },
+        {
+            "id": 4,
+            "img": "assets/img/Marketingleiter.jpg",
+            "desc": "«Bei der Worknet geht man auf die Bedürfnisse ein und unterstützt bei langfristien sowie auch kurzfristigen Lösungen. Man fühlt sich da gut aufgehoben»",
+            "name": "D. C.",
+            "designation": "Marketingleiter"
+        },
+        {
+            "id": 5,
+            "img": "assets/img/Glaserei.jpg",
+            "desc": "«Guter Kontakt. Kompetente Auskünfte. Gute Mitarbeiter. Service perfekt. Personal fleissig. Sehr zu empfehlen.»",
+            "name": "J. C.",
+            "designation": "CEO Glaserei"
+        },
+        {
+            "id": 6,
+            "img": "assets/img/Elektrobranche.jpg",
+            "desc": "«Unter den Personalvermittlern ist für mich die Worknet AG ganz klar die Nummer eins! Die hohe Fach- und Sozialkompetenz so wie das familiäre Umfeld bewirken eine sehr professionelle und angenehme Unternehmenskultur. »",
+            "name": "A. B.",
+            "designation": "Geschäftsführer Elektrobranche"
+        },
+        {
+            "id": 7,
+            "img": "assets/img/Medienbranche.jpg",
+            "desc": "«Sehr kompetent und äusserst sympatisch!»",
+            "name": "R. K.",
+            "designation": "Geschäftsführer Medienbranche"
+        }
+    ],
+    "worktogether": [
+        {
+            "id": 1,
+            "heading": "Setze Dich mit uns in Kontakt",
+            "desc": "Nehme einfach und unverbindlich Kontakt mit uns auf, indem Du das Kontaktformular verwendest."
+        },
+        {
+            "id": 2,
+            "heading": "Lege Deine Anforderungen fest",
+            "desc": "Unsere Kundenbetreuer:innen werden sich mit Dir in Verbindung setzen, um zu besprechen, wie wir Dir helfen können."
+        },
+        {
+            "id": 3,
+            "heading": "Wir machen das Recruiting zu einer Leichtigkeit",
+            "desc": "Wenn Du dich für eine Zusammenarbeit mit uns entscheidest, fangen wir sofort an."
+        }
+    ],
+    "service": [
+        {
+            "id": 1,
+            "img": "assets/img/img1.jpg",
+            "subTitle": "Für Unternehmen",
+            "title": "Lerne Mitarbeiter:innen kennen, die Du sonst nie getroffen hättest.",
+            "content": "Job Angebote bringen kaum gute Bewerbungen?",
+            "desc": "Wir helfen Dir dabei passende Mitarbeiter:innen zu finden und zu kontaktieren, damit Du offene Stellen in kürzester Zeit besetzen kannst!",
+            "link": "unternehmen"
+        },
+        {
+            "id": 2,
+            "img": "assets/img/img2.jpg",
+            "subTitle": "Für Bewerber",
+            "title": "Erfahre von geeigneten Stellen, ohne selbst danach suchen zu müssen.",
+            "content": "Unser Team weiß, wie zeitraubend die Jobsuche sein kann!",
+            "desc": "Deshalb übernehmen auch wir die Arbeit für Dich und bieten Dir Jobs, die zu Deinen Erfahrungen, Wünschen und Gehaltsvorstellungen passen.",
+            "link": "bewerberlnnen"
+        }
+    ],
+    "job": [
+        {
+            "id": 1,
+            "img": "assets/img/img9.jpg",
+            "title": "Job (m/w/d) - Jobdetails - Verdienst",
+            "heading": "Jobdetails",
+            "smallDesc": "The pain itself is very important, but it will take a long time. The pain itself is very important, but it will take a very long time.",
+            "reference": "xxx",
+            "department": "Department",
+            "location": "Lorem ispum",
+            "salary": "xx",
+            "enployment": "Lorem Ispum",
+            "merit": "Lorem Ispum",
+            "working": "The pain itself is very important, but it will take a long time. The pain itself is very important, but it will take a very long time.",
+            "empBenefits": "The pain itself is very important, but it will take a very long time. The pain itself is very important, but it will take a very long time. The pain itself is very important, but it will take a very long time. The pain itself is very important, but it will take a very long time.",
+            "yourTasks": "The pain itself is very important, but it will take a very long time. The pain itself is very important, but it will take a very long time. The pain itself is very important, but it will take a very long time. The pain itself is very important, but it will take a very long time.",
+            "yourProfile": "The pain itself is very important, but it will take a very long time. The pain itself is very important, but it will take a very long time. The pain itself is very important, but it will take a very long time. The pain itself is very important, but it will take a very long time.",
+            "contact": "The pain itself is very important, it will be settled sadipscing elitr, but diam nonumy"
+        },
+        {
+            "id": 2,
+            "img": "assets/img/img9.jpg",
+            "title": "Job (m/w/d) - Jobdetails - Verdienst",
+            "heading": "Jobdetails",
+            "smallDesc": "The pain itself is very important, but it will take a long time. The pain itself is very important, but it will take a very long time.",
+            "reference": "xxx",
+            "department": "Department",
+            "location": "Lorem ispum",
+            "salary": "xx",
+            "enployment": "Lorem Ispum",
+            "merit": "Lorem Ispum",
+            "working": "The pain itself is very important, but it will take a long time. The pain itself is very important, but it will take a very long time.",
+            "empBenefits": "The pain itself is very important, but it will take a very long time. The pain itself is very important, but it will take a very long time. The pain itself is very important, but it will take a very long time. The pain itself is very important, but it will take a very long time.",
+            "yourTasks": "The pain itself is very important, but it will take a very long time. The pain itself is very important, but it will take a very long time. The pain itself is very important, but it will take a very long time. The pain itself is very important, but it will take a very long time.",
+            "yourProfile": "The pain itself is very important, but it will take a very long time. The pain itself is very important, but it will take a very long time. The pain itself is very important, but it will take a very long time. The pain itself is very important, but it will take a very long time.",
+            "contact": "The pain itself is very important, it will be settled sadipscing elitr, but diam nonumy"
+        }
+    ],
+    "team": [
+        {
+            "id": 1,
+            "img": "assets/img/team1.jpg",
+            "img2": "assets/img/team2.jpg",
+            "name": "Daniele Manco",
+            "designation": "ceo",
+            "phone": "+41 61 560 10 01",
+            "email": "danielemanco@gmail.com",
+            "linkedin": "danielemanco"
+        },
+        {
+            "id": 2,
+            "img": "assets/img/team2.jpg",
+            "img2": "assets/img/team1.jpg",
+            "name": "Nuri Tuerkoglu",
+            "designation": "ceo",
+            "phone": "+41 61 560 10 01",
+            "email": "nurituerkoglu@gmail.com",
+            "linkedin": "nurituerkoglu"
+        },
+        {
+            "id": 3,
+            "img": "assets/img/team1.jpg",
+            "img2": "assets/img/team2.jpg",
+            "name": "Daniele Manco",
+            "designation": "ceo",
+            "phone": "+41 61 560 10 01",
+            "email": "danielemanco@gmail.com",
+            "linkedin": "danielemanco"
+        },
+        {
+            "id": 4,
+            "img": "assets/img/team2.jpg",
+            "img2": "assets/img/team1.jpg",
+            "name": "Nuri Tuerkoglu",
+            "designation": "ceo",
+            "phone": "+41 61 560 10 01",
+            "email": "nurituerkoglu@gmail.com",
+            "linkedin": "nurituerkoglu"
+        },
+        {
+            "id": 5,
+            "img": "assets/img/team1.jpg",
+            "img2": "assets/img/team2.jpg",
+            "name": "Daniele Manco",
+            "designation": "ceo",
+            "phone": "+41 61 560 10 01",
+            "email": "danielemanco@gmail.com",
+            "linkedin": "danielemanco"
+        },
+        {
+            "id": 6,
+            "img": "assets/img/team2.jpg",
+            "img2": "assets/img/team1.jpg",
+            "name": "Nuri Tuerkoglu",
+            "designation": "ceo",
+            "phone": "+41 61 560 10 01",
+            "email": "nurituerkoglu@gmail.com",
+            "linkedin": "nurituerkoglu"
+        },
+        {
+            "id": 7,
+            "img": "assets/img/team1.jpg",
+            "img2": "assets/img/team2.jpg",
+            "name": "Daniele Manco",
+            "designation": "ceo",
+            "phone": "+41 61 560 10 01",
+            "email": "danielemanco@gmail.com",
+            "linkedin": "danielemanco"
+        },
+        {
+            "id": 8,
+            "img": "assets/img/team2.jpg",
+            "img2": "assets/img/team1.jpg",
+            "name": "Nuri Tuerkoglu",
+            "designation": "ceo",
+            "phone": "+41 61 560 10 01",
+            "email": "nurituerkoglu@gmail.com",
+            "linkedin": "nurituerkoglu"
+        }
+    ]
+}

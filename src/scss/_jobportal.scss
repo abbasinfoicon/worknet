@@ -1,0 +1,145 @@
+.jobportal {
+    iframe {
+        height: 100vh;
+
+        &::-webkit-scrollbar {
+            width: 5px;
+        }
+
+        /* Track */
+        &::-webkit-scrollbar-track {
+            background: #f1f1f1;
+        }
+
+        /* Handle */
+        &::-webkit-scrollbar-thumb {
+            background: #888;
+        }
+
+        /* Handle on hover */
+        &::-webkit-scrollbar-thumb:hover {
+            background: #555;
+        }
+    }
+
+    .contact-form {
+        margin-top: 0;
+
+        .title {
+
+            h3 {}
+
+            p {
+                font-size: 1.25rem;
+                color: $lgtblack;
+                @include barlow(regular);
+                letter-spacing: normal;
+            }
+        }
+
+        .form-group {
+            margin-bottom: 20px;
+
+            @media (max-width: 767px) {
+                margin-bottom: 15px;
+            }
+
+            input {}
+        }
+    }
+
+    &-list {
+        position: relative;
+        padding: 48px;
+        background-color: $lgray;
+        border: 1px solid #BDBFBF;
+        margin-bottom: 30px;
+        @include border-radius(4px);
+
+        @media (max-width: 767px) {
+            padding: 30px;
+        }
+
+        @media (max-width: 425px) {
+            padding: 15px;
+        }
+
+        h2 {
+            font-size: 2.5rem;
+            color: $lgtblack;
+            @include barlow(bold);
+            margin-bottom: 20px;
+        }
+
+        ul {
+            margin-bottom: 35px;
+            display: flex;
+            align-items: center;
+            gap: 30px;
+
+            @media (max-width: 767px) {
+                margin-bottom: 15px;
+            }
+
+            li {
+                color: $lgtblack;
+
+                i {
+                    color: $red;
+                    margin-right: 15px;
+                }
+            }
+        }
+
+        a {
+            &.department {
+                color: $lgtblack;
+                background-color: #ebebeb;
+                position: absolute;
+                right: 48px;
+                top: 48px;
+                padding: 3px 10px;
+
+                @media (max-width: 767px) {
+                    right: 30px;
+                    top: 30px;
+                }
+
+                @media (max-width: 425px) {
+                    right: 15px;
+                    top: 15px;
+                }
+            }
+
+            &.cutsom-btn {}
+        }
+    }
+}
+
+.bredcrumb {
+    position: relative;
+
+    ul {
+        display: flex;
+        align-items: center;
+        gap: 15px;
+        margin-bottom: 30px;
+
+        li {
+            a {
+                font-size: 1.25rem;
+                color: $lgtblack
+            }
+
+            img {
+                &.prev {
+                    margin-right: 15px;
+                }
+
+                &.next {
+                    margin-left: 15px;
+                }
+            }
+        }
+    }
+}
