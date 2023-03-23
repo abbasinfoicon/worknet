@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react'
 import { Helmet } from 'react-helmet'
 import { Link, useParams } from 'react-router-dom'
 import axiosCall from '../components/Axios';
+import ApplyJob from '../components/template/ApplyJob';
 
 const JobportalDetails = () => {
     const params = useParams();
@@ -45,7 +46,7 @@ const JobportalDetails = () => {
                                 isLoading ? <div className="loading"><img src='assets/img/loader.gif' alt='loading' /></div> :
                                     jbDet.map((item, index) => {
                                         return (
-                                            <div className="jobportal-details">
+                                            <div className="jobportal-details" key={index}>
                                                 <div className="img-style wow slideInUp">
                                                     <img src={item.img} alt={item.title} className="img-fluid" />
                                                 </div>
@@ -208,62 +209,7 @@ const JobportalDetails = () => {
                                 <h2>Sie möchten sich bewerben?</h2>
                                 <p>Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor.</p>
 
-                                <form action="" className="contact-form wow slideInUp">
-                                    <div className="form-group">
-                                        <select name="" id="" className="form-control">
-                                            <option value="">Anrede</option>
-                                            <option value="">Anrede</option>
-                                            <option value="">Anrede</option>
-                                            <option value="">Anrede</option>
-                                        </select>
-                                    </div>
-
-                                    <div className="form-group wow slideInUp">
-                                        <input type="text" name="" id="" className="form-control" placeholder="Ihr Vorname" />
-                                    </div>
-
-                                    <div className="form-group wow slideInUp">
-                                        <input type="text" name="" id="" className="form-control" placeholder="Ihr Nachname" />
-                                    </div>
-
-                                    <div className="form-group wow slideInUp">
-                                        <input type="email" name="" id="" className="form-control"
-                                            placeholder="Ihre E-Mail Adresse" />
-                                    </div>
-
-                                    <div className="form-group wow slideInUp">
-                                        <input type="number" name="" id="" className="form-control"
-                                            placeholder="Ihre Telefonnummer" />
-                                    </div>
-
-                                    <div className="form-group wow slideInUp">
-                                        <input type="number" name="" id="" className="form-control" placeholder="Ihre Mobilnummer" />
-                                    </div>
-
-                                    <h3>Anlagen</h3>
-                                    <p>Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor.
-                                    </p>
-
-                                    <div className="form-group">
-                                        <input type="file" id="real-file" hidden="hidden" />
-                                        <button type="button" id="custom-button">Datei anhängen</button>
-                                        <span id="custom-text"></span>
-                                    </div>
-
-                                    <div className="form-group agreement wow slideInUp">
-                                        <input id="agreement" type="checkbox" />
-                                        <label htmlFor="agreement">Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam
-                                            nonumy. Lorem ipsum dolor sit amet.</label>
-                                    </div>
-
-                                    <div className="form-group wow slideInUp">
-                                        <label>Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod
-                                            tempor. Lorem ipsum dolor sit amet, consetetur sadipscing elitr.</label>
-                                    </div>
-
-                                    <Link to="/" className="cutsom-btn hover wow slideInUp">Absenden <i
-                                        className="fa-solid fa-arrow-right"></i></Link>
-                                </form>
+                                <ApplyJob />
                             </div>
                         </div>
                     </div>

@@ -142,3 +142,23 @@
         }
     }
 }
+
+.no-job {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 100%;
+    text-align: center;
+    color: $red;
+    font-weight: bold;
+
+    img {
+        display: block;
+        margin: 0 auto 15px;
+    }
+}
+
+.all-fld {
+    cursor: pointer;
+}

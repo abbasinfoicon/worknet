@@ -133,7 +133,6 @@ input {
   &:visited {
     outline: none;
     @include box-shadow(none);
-    @include border-radius(0);
   }
 }
 

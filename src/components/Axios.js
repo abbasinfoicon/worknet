@@ -1,7 +1,7 @@
 import axios from 'axios';
 
 const axiosCall = (url) => {
-    return axios.get(`https://scary-puce-deer.cyclic.app/${url}`);
+    return axios.get(`https://precious-teal-betta.cyclic.app/${url}`);
 }
 
 export default axiosCall

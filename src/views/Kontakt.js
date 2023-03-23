@@ -1,20 +1,38 @@
 import React, { useState } from 'react'
 import { Helmet } from 'react-helmet'
 import { Link } from 'react-router-dom'
-import Select from 'react-select';
 import Banner from '../components/template/Banner'
 import WorkTogether from '../components/template/WorkTogether'
 import WorkWithUs from '../components/template/WorkWithUs'
 
-const theme = [
-  { value: 'dienstleistung', label: 'Dienstleistung' },
-  { value: 'elektriker', label: 'Elektriker/in' },
-  { value: 'kaufmannisch', label: 'Kaufmännisch' },
-  { value: 'maler', label: 'Maler/in' },
-];
-
 const Kontakt = () => {
-  const [selectedOption, setSelectedOption] = useState(null);
+  const [data, setData] = useState({
+    name: "",
+    email: "",
+    tel: "",
+    theme: "",
+    msg: "",
+  });
+
+  const handleChange = (e) => {
+    setData({ ...data, [e.target.name]: e.target.value });
+  }
+
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+
+    const { name, email, tel, theme, msg } = data;
+
+    console.log("Submit-", data);
+    // after submit data
+    setData({
+      name: "",
+      email: "",
+      tel: "",
+      theme: "",
+      msg: "",
+    });
+  };
 
   return (
     <div className='kontakt'>
@@ -24,7 +42,80 @@ const Kontakt = () => {
 
       <Banner page={"contact"} />
 
+      <WorkWithUs />
 
+      <section className="contact bg-white">
+        <div className="container-fluid container-custom">
+          <div className="row">
+            <div className="col-md-12">
+              <div className="title wow slideInUp">
+                <p>worknet ag</p>
+                <h2>Kontaktiere Uns</h2>
+              </div>
+            </div>
+          </div>
+
+          <div className="row">
+            <div className="col-md-12">
+              <div className="contact-form">
+                <form onSubmit={handleSubmit}>
+                  <div className="row">
+                    <div className="col-md-6 wow slideInUp">
+                      <div className="form-group">
+                        <label htmlFor="">Dein Name</label>
+                        <input type="text" name="name" value={data.name} onChange={handleChange} id="" className="form-control" placeholder="Name" />
+                      </div>
+                    </div>
+
+                    <div className="col-md-6 wow slideInUp">
+                      <div className="form-group">
+                        <label htmlFor="">Deine E-Mail Adresse</label>
+                        <input type="email" name="email" value={data.email} onChange={handleChange} id="" className="form-control"
+                          placeholder="E-Mail Adresse" />
+                      </div>
+                    </div>
+                  </div>
+
+                  <div className="row">
+                    <div className="col-md-6 wow slideInUp">
+                      <div className="form-group">
+                        <label htmlFor="">Deine Telefonnummer</label>
+                        <input type="number" name="tel" value={data.tel} onChange={handleChange} id="" className="form-control"
+                          placeholder="Telefonnummer" />
+                      </div>
+                    </div>
+
+                    <div className="col-md-6 wow slideInUp">
+                      <div className="form-group">
+                        <label htmlFor="">Thema</label>
+                        <select className='form-control' name="theme" onChange={handleChange}>
+                          <option value="dienstleistung">Dienstleistung</option>
+                          <option value="elektriker">Elektriker/in</option>
+                          <option value="kaufmannisch">Kaufmännisch</option>
+                          <option value="maler">Maler/in</option>
+                        </select>
+                      </div>
+                    </div>
+                  </div>
+
+                  <div className="form-group wow slideInUp">
+                    <label htmlFor="">Deine Nachricht</label>
+                    <textarea name="msg" value={data.msg} onChange={handleChange} id="" cols="30" rows="10" className="form-control"
+                      placeholder="Deine Nachricht"></textarea>
+                  </div>
+
+                  <div className="row">
+                    <div className="col-md-6 wow slideInUp">
+                      <button type="submit" className="btn-submit" >Senden</button>
+                    </div>
+                  </div>
+                </form>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+      
       <section className="contact bg-gray">
         <div className="container-fluid container-custom">
           <div className="row align-items-end">
@@ -99,79 +190,6 @@ const Kontakt = () => {
         </div>
       </section>
 
-      <section className="contact bg-white">
-        <div className="container-fluid container-custom">
-          <div className="row">
-            <div className="col-md-12">
-              <div className="title wow slideInUp">
-                <p>worknet ag</p>
-                <h2>Kontaktiere Uns</h2>
-              </div>
-            </div>
-          </div>
-
-          <div className="row">
-            <div className="col-md-12">
-              <div className="contact-form">
-                <form action="">
-                  <div className="row">
-                    <div className="col-md-6 wow slideInUp">
-                      <div className="form-group">
-                        <label htmlFor="">Dein Name</label>
-                        <input type="text" name="" id="" className="form-control" placeholder="Name" />
-                      </div>
-                    </div>
-
-                    <div className="col-md-6 wow slideInUp">
-                      <div className="form-group">
-                        <label htmlFor="">Deine E-Mail Adresse</label>
-                        <input type="email" name="" id="" className="form-control"
-                          placeholder="E-Mail Adresse" />
-                      </div>
-                    </div>
-                  </div>
-
-                  <div className="row">
-                    <div className="col-md-6 wow slideInUp">
-                      <div className="form-group">
-                        <label htmlFor="">Deine Telefonnummer</label>
-                        <input type="number" name="" id="" className="form-control"
-                          placeholder="Telefonnummer" />
-                      </div>
-                    </div>
-
-                    <div className="col-md-6 wow slideInUp">
-                      <div className="form-group">
-                        <label htmlFor="">Thema</label>
-                        <Select
-                          defaultValue={selectedOption}
-                          onChange={setSelectedOption}
-                          options={theme}
-                          placeholder="Bitte auswählen"
-                        />
-                      </div>
-                    </div>
-                  </div>
-
-                  <div className="form-group wow slideInUp">
-                    <label htmlFor="">Deine Nachricht</label>
-                    <textarea name="" id="" cols="30" rows="10" className="form-control"
-                      placeholder="Deine Nachricht"></textarea>
-                  </div>
-
-                  <div className="row">
-                    <div className="col-md-6 wow slideInUp">
-                      <input type="submit" value="Senden" className="btn-submit" />
-                    </div>
-                  </div>
-                </form>
-              </div>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      <WorkWithUs />
       <WorkTogether />
     </div>
   )
