@@ -161,4 +161,8 @@
 
 .all-fld {
     cursor: pointer;
+
+    &:hover {
+        color: $red;
+    }
 }

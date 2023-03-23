@@ -123,6 +123,8 @@ const Jobportal = () => {
                   <div className='form-group'>
                     <Select
                       ref={selectDepartment}
+                      className="react-select-container"
+                      classNamePrefix="react-select"
                       defaultValue={depOption}
                       onChange={setDepOption}
                       options={department}
@@ -134,6 +136,8 @@ const Jobportal = () => {
                   <div className='form-group'>
                     <Select
                       ref={selectEnpoyment}
+                      className="react-select-container"
+                      classNamePrefix="react-select"
                       defaultValue={empOption}
                       onChange={setEmpOption}
                       options={enployment}

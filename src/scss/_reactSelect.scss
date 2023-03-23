@@ -1,0 +1,42 @@
+.contact-form {
+    .react-select {
+        &-container {}
+
+        &__control {
+            background-color: #FAFAFA;
+            border: 1px solid #D7D7D7;
+        }
+
+        &__value {
+            &-container {
+                padding: 0 20px;
+            }
+        }
+
+        &__multi-value {
+            background: transparent;
+            margin: 0;
+
+            &__label {
+                font-size: 1rem;
+                color: $lgtblack;
+            }
+        }
+
+
+        &__placeholder {
+            font-size: 1.25rem;
+            color: lighten($lgtblack, 50%);
+            margin: 0;
+        }
+
+        &__input {
+            height: 50px;
+
+            &-container {
+                margin: 0;
+                padding: 0;
+            }
+        }
+    }
+}
