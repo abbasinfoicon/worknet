@@ -7,7 +7,8 @@ import JobList from '../components/template/JobList';
 
 
 const Jobportal = () => {
-  const selectInputRef = useRef();
+  const selectDepartment = useRef();
+  const selectEnpoyment = useRef();
   const [isLoading, setLoading] = useState(true);
   const [enployment, setEnployment] = useState([]);
   const [department, setDepartment] = useState([]);
@@ -63,11 +64,8 @@ const Jobportal = () => {
       zipCity: ""
     })
 
-    const clr = document.querySelector(".css-1xc3v61-indicatorContainer");
-    clr.classList("active");
-
-    console.log("DEP", depOption);
-    console.log("EMP", empOption);
+    selectDepartment.current.clearValue()
+    selectEnpoyment.current.clearValue()
   }
 
   useEffect(() => {
@@ -124,6 +122,7 @@ const Jobportal = () => {
 
                   <div className='form-group'>
                     <Select
+                      ref={selectDepartment}
                       defaultValue={depOption}
                       onChange={setDepOption}
                       options={department}
@@ -134,6 +133,7 @@ const Jobportal = () => {
 
                   <div className='form-group'>
                     <Select
+                      ref={selectEnpoyment}
                       defaultValue={empOption}
                       onChange={setEmpOption}
                       options={enployment}
