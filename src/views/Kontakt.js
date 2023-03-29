@@ -22,8 +22,9 @@ const Kontakt = () => {
     e.preventDefault();
 
     const { name, email, tel, theme, msg } = data;
-
+    alert("Data Submited- " + " Name- " + data.name + ", Email- " + data.email + ", Tel- " + data.tel + ", Theme- " + data.theme + ", Msg- " + data.msg);
     console.log("Submit-", data);
+
     // after submit data
     setData({
       name: "",
@@ -89,7 +90,7 @@ const Kontakt = () => {
                       <div className="form-group">
                         <label htmlFor="">Thema</label>
                         <select className='form-control' name="theme" onChange={handleChange}>
-                          <option value="dienstleistung">Dienstleistung</option>
+                          <option value="dienstleistung" selected>Dienstleistung</option>
                           <option value="elektriker">Elektriker/in</option>
                           <option value="kaufmannisch">Kaufmännisch</option>
                           <option value="maler">Maler/in</option>
@@ -115,7 +116,7 @@ const Kontakt = () => {
           </div>
         </div>
       </section>
-      
+
       <section className="contact bg-gray">
         <div className="container-fluid container-custom">
           <div className="row align-items-end">

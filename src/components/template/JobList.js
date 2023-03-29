@@ -21,7 +21,7 @@ const JobList = ({ jobData, loading }) => {
                                     <Link to={`/job/${item.slug}`} className="cutsom-btn hover">Jetzt Bewerben <i className="fa-solid fa-arrow-right"></i></Link>
                                 </div>
                             )
-                        }) : <h2 className='no-job'><img src='assets/img/no-result.png' />No Job here..</h2>
+                        }) : <h2 className='no-job'><img src='assets/img/no-result.png' />Kein Job hier..</h2>
             }
         </div>
     )
