@@ -1,5 +1,6 @@
 import bsCustomFileInput from 'bs-custom-file-input'
-import { CKEditor } from 'ckeditor4-react'
+import { CKEditor } from '@ckeditor/ckeditor5-react';
+import { ClassicEditor } from '@ckeditor/ckeditor5-build-classic';
 import React, { useEffect } from 'react'
 
 const About = () => {
@@ -82,7 +83,7 @@ const About = () => {
 
                   <div className="form-group">
                     <label>Content</label>
-                    <CKEditor initData="<p>Als Bindeglied zwischen Arbeitsuchenden und Unternehmen steht worknet ag dafür, Erfolge durch flexible Personaldienstleistungen tatkräftig zu unterstützen.</p><ul><li>Seit 2005 widmen wir uns der Vermittlung von Temporär- und Dauerstellen.</li><li>Wir konnten in der Region Basel ein umfangreiches Recruiting-Netzwerk aufbauen</li><li>Wir erweitern unsere Personallösungen für unsere Kunden stets und passen uns an die individuellen Bedürfnisse unserer Partner an.</li></ul>" />
+                    <CKEditor editor={ClassicEditor} data="<p>Als Bindeglied zwischen Arbeitsuchenden und Unternehmen steht worknet ag dafür, Erfolge durch flexible Personaldienstleistungen tatkräftig zu unterstützen.</p><ul><li>Seit 2005 widmen wir uns der Vermittlung von Temporär- und Dauerstellen.</li><li>Wir konnten in der Region Basel ein umfangreiches Recruiting-Netzwerk aufbauen</li><li>Wir erweitern unsere Personallösungen für unsere Kunden stets und passen uns an die individuellen Bedürfnisse unserer Partner an.</li></ul>" />
                   </div>
 
                   <div className="row">

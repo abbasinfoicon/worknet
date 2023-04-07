@@ -1,5 +1,5 @@
 import React from 'react'
-import { Link } from 'react-router-dom'
+import { Link, NavLink } from 'react-router-dom'
 
 const Aside = () => {
     return (
@@ -31,148 +31,149 @@ const Aside = () => {
 
                 <nav className="mt-2">
                     <ul className="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false">
-                        <li className="nav-item menu-open">
-                            <Link to="/dashboard" className="nav-link active">
+                        <li className="nav-item">
+                            <NavLink to="/dashboard" className="nav-link">
                                 <i className="nav-icon fas fa-tachometer-alt"></i>
                                 <p> Dashboard </p>
-                            </Link>
+                            </NavLink>
                         </li>
-                        <li className="nav-item">
-                            <Link to="#" className="nav-link">
+
+                        <li className="nav-item menu-has-child">
+                            <NavLink to="#" className="nav-link">
                                 <i className="nav-icon fas fa-book"></i>
-                                <p> Pages <i className="fas fa-angle-left right"></i>
-                                </p>
-                            </Link>
+                                <p> Pages <i className="fas fa-angle-left right"></i></p>
+                            </NavLink>
                             <ul className="nav nav-treeview">
                                 <li className="nav-item">
-                                    <Link to="/profile" className="nav-link">
+                                    <NavLink to="/profile" className="nav-link">
                                         <i className="far fa-circle nav-icon"></i>
                                         <p>Profile</p>
-                                    </Link>
+                                    </NavLink>
                                 </li>
                                 <li className="nav-item">
-                                    <Link to="/about" className="nav-link">
+                                    <NavLink to="/about" className="nav-link">
                                         <i className="far fa-circle nav-icon"></i>
                                         <p>About us</p>
-                                    </Link>
+                                    </NavLink>
                                 </li>
                                 <li className="nav-item">
-                                    <Link to="/application" className="nav-link">
+                                    <NavLink to="/application" className="nav-link">
                                         <i className="far fa-circle nav-icon"></i>
                                         <p>Application</p>
-                                    </Link>
+                                    </NavLink>
                                 </li>
                                 <li className="nav-item">
-                                    <Link to="/company" className="nav-link">
+                                    <NavLink to="/company" className="nav-link">
                                         <i className="far fa-circle nav-icon"></i>
                                         <p>Company</p>
-                                    </Link>
+                                    </NavLink>
                                 </li>
                                 <li className="nav-item">
-                                    <Link to="/data-protection" className="nav-link">
+                                    <NavLink to="/data-protection" className="nav-link">
                                         <i className="far fa-circle nav-icon"></i>
                                         <p>Data protection</p>
-                                    </Link>
+                                    </NavLink>
                                 </li>
                                 <li className="nav-item">
-                                    <Link to="/cookies" className="nav-link">
+                                    <NavLink to="/cookies" className="nav-link">
                                         <i className="far fa-circle nav-icon"></i>
                                         <p>Cookies</p>
-                                    </Link>
+                                    </NavLink>
                                 </li>
                                 <li className="nav-item">
-                                    <Link to="/imprint" className="nav-link">
+                                    <NavLink to="/imprint" className="nav-link">
                                         <i className="far fa-circle nav-icon"></i>
                                         <p>imprint</p>
-                                    </Link>
+                                    </NavLink>
                                 </li>
                             </ul>
                         </li>
+
                         <li className="nav-item">
-                            <Link to="/slider" className="nav-link">
+                            <NavLink to="/slider" className="nav-link">
                                 <i className="nav-icon fas fa-sliders-h"></i>
                                 <p> Hero Slider <span className="badge badge-info right">6</span></p>
-                            </Link>
+                            </NavLink>
                         </li>
                         <li className="nav-item">
-                            <Link to="/job" className="nav-link">
+                            <NavLink to="/job" className="nav-link">
                                 <i className="nav-icon far fa-calendar-alt"></i>
                                 <p> Jobs <span className="badge badge-info right">6</span></p>
-                            </Link>
+                            </NavLink>
                         </li>
 
                         <li className="nav-header">MEDIA</li>
 
                         <li className="nav-item">
-                            <Link to="/services" className="nav-link">
+                            <NavLink to="/services" className="nav-link">
                                 <i className="nav-icon fas fa-users-cog"></i>
                                 <p> Services </p>
-                            </Link>
+                            </NavLink>
                         </li>
 
                         <li className="nav-item">
-                            <Link to="/our-features" className="nav-link">
+                            <NavLink to="/our-features" className="nav-link">
                                 <i className="nav-icon fas fa-tasks"></i>
                                 <p> Our Features</p>
-                            </Link>
+                            </NavLink>
                         </li>
 
                         <li className="nav-item">
-                            <Link to="/testimonial" className="nav-link">
+                            <NavLink to="/testimonial" className="nav-link">
                                 <i className="nav-icon fas fa-quote-right"></i>
                                 <p> Testimonial </p>
-                            </Link>
+                            </NavLink>
                         </li>
 
                         <li className="nav-header">CONTACT INFO</li>
 
                         <li className="nav-item">
-                            <Link to="/contact" className="nav-link">
+                            <NavLink to="/contact" className="nav-link">
                                 <i className="nav-icon fas fa-users"></i>
                                 <p> Contact us </p>
-                            </Link>
+                            </NavLink>
                         </li>
 
                         <li className="nav-item">
-                            <Link to="/team" className="nav-link">
+                            <NavLink to="/team" className="nav-link">
                                 <i className="nav-icon fas fa-users"></i>
                                 <p> Team </p>
-                            </Link>
+                            </NavLink>
                         </li>
 
                         <li className="nav-item">
-                            <Link to="/address" className="nav-link">
+                            <NavLink to="/address" className="nav-link">
                                 <i className="nav-icon far fa-address-book"></i>
                                 <p> Address </p>
-                            </Link>
+                            </NavLink>
                         </li>
 
                         <li className="nav-item">
-                            <Link to="/membership" className="nav-link">
+                            <NavLink to="/membership" className="nav-link">
                                 <i className="nav-icon fas fa-handshake"></i>
                                 <p> Membership </p>
-                            </Link>
+                            </NavLink>
                         </li>
 
                         <li className="nav-item">
-                            <Link to="/timing" className="nav-link">
+                            <NavLink to="/timing" className="nav-link">
                                 <i className="nav-icon far fa-clock"></i>
                                 <p> Timing </p>
-                            </Link>
+                            </NavLink>
                         </li>
 
                         <li className="nav-item">
-                            <Link to="/social" className="nav-link">
+                            <NavLink to="/social" className="nav-link">
                                 <i className="nav-icon fas fa-share-alt"></i>
                                 <p> Social </p>
-                            </Link>
+                            </NavLink>
                         </li>
 
                         <li className="nav-item">
-                            <Link to="/logout" className="nav-link">
+                            <NavLink to="/logout" className="nav-link">
                                 <i className="nav-icon fas fa-sign-out-alt"></i>
                                 <p> Logout </p>
-                            </Link>
+                            </NavLink>
                         </li>
                     </ul>
                 </nav>

@@ -1,6 +1,7 @@
 import bsCustomFileInput from 'bs-custom-file-input'
-import { CKEditor } from 'ckeditor4-react'
+import { CKEditor } from '@ckeditor/ckeditor5-react';
 import React, { useEffect } from 'react'
+import { ClassicEditor } from '@ckeditor/ckeditor5-build-classic';
 
 const Testimonial = () => {
   useEffect(() => {
@@ -72,7 +73,7 @@ const Testimonial = () => {
 
                   <div className="form-group">
                     <label>Content</label>
-                    <CKEditor initData="<p>Full Description</p>" />
+                    <CKEditor editor={ClassicEditor} data="<p>Hello from CKEditor 5!</p>" />
                   </div>
 
                   <div className="row">

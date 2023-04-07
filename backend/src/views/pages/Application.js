@@ -1,5 +1,5 @@
 import bsCustomFileInput from 'bs-custom-file-input'
-import { CKEditor } from 'ckeditor4-react'
+import { CKEditor } from '@ckeditor/ckeditor5-react';
 import React, { useEffect } from 'react'
 
 const Application = () => {

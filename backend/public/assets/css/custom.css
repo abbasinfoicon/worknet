@@ -69,3 +69,21 @@
 .layout-fixed .brand-link {
     height: 50px;
 }
+
+.modal.show {
+    display: block;
+}
+
+
+
+.main-sidebar .menu-has-child>a.active {
+    background-color: transparent !important;
+    color: #c2c7d0 !important;
+}
+.main-sidebar .menu-open>a.active {
+    background-color: #007bff !important;
+    color: #fff !important;
+}
+.projects td>p {
+    margin: 0;
+}

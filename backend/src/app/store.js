@@ -1,15 +1,15 @@
 import { configureStore } from '@reduxjs/toolkit';
 import { authApi } from '../features/auth/authApi';
-import { cmsPage } from '../features/services/pages/cmsPage';
+import { sliderApi } from '../features/services/sliderApi';
 
 export const store = configureStore({
   reducer: {
     [authApi.reducerPath]: authApi.reducer,
-    [cmsPage.reducerPath]: cmsPage.reducer,
+    [sliderApi.reducerPath]: sliderApi.reducer,
   },
   middleware: (getDefaultMiddleware) =>
     getDefaultMiddleware().concat([
       authApi.middleware,
-      cmsPage.middleware,
+      sliderApi.middleware,
     ]),
 });

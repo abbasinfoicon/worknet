@@ -226,31 +226,31 @@ const Profile = () => {
                 <div className="tab-pane" id="settings">
                   <form className="form-horizontal">
                     <div className="form-group row">
-                      <label for="inputName" className="col-sm-2 col-form-label">Name</label>
+                      <label htmlFor="inputName" className="col-sm-2 col-form-label">Name</label>
                       <div className="col-sm-10">
                         <input type="email" className="form-control" id="inputName" placeholder="Name" />
                       </div>
                     </div>
                     <div className="form-group row">
-                      <label for="inputEmail" className="col-sm-2 col-form-label">Email</label>
+                      <label htmlFor="inputEmail" className="col-sm-2 col-form-label">Email</label>
                       <div className="col-sm-10">
                         <input type="email" className="form-control" id="inputEmail" placeholder="Email" />
                       </div>
                     </div>
                     <div className="form-group row">
-                      <label for="inputName2" className="col-sm-2 col-form-label">Name</label>
+                      <label htmlFor="inputName2" className="col-sm-2 col-form-label">Name</label>
                       <div className="col-sm-10">
                         <input type="text" className="form-control" id="inputName2" placeholder="Name" />
                       </div>
                     </div>
                     <div className="form-group row">
-                      <label for="inputExperience" className="col-sm-2 col-form-label">Experience</label>
+                      <label htmlFor="inputExperience" className="col-sm-2 col-form-label">Experience</label>
                       <div className="col-sm-10">
                         <textarea className="form-control" id="inputExperience" placeholder="Experience"></textarea>
                       </div>
                     </div>
                     <div className="form-group row">
-                      <label for="inputSkills" className="col-sm-2 col-form-label">Skills</label>
+                      <label htmlFor="inputSkills" className="col-sm-2 col-form-label">Skills</label>
                       <div className="col-sm-10">
                         <input type="text" className="form-control" id="inputSkills" placeholder="Skills" />
                       </div>

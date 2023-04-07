@@ -14,19 +14,19 @@ const Contact = () => {
         </div>
         <div className="col-7">
           <div className="form-group">
-            <label for="inputName">Name</label>
+            <label htmlFor="inputName">Name</label>
             <input type="text" id="inputName" className="form-control" />
           </div>
           <div className="form-group">
-            <label for="inputEmail">E-Mail</label>
+            <label htmlFor="inputEmail">E-Mail</label>
             <input type="email" id="inputEmail" className="form-control" />
           </div>
           <div className="form-group">
-            <label for="inputSubject">Subject</label>
+            <label htmlFor="inputSubject">Subject</label>
             <input type="text" id="inputSubject" className="form-control" />
           </div>
           <div className="form-group">
-            <label for="inputMessage">Message</label>
+            <label htmlFor="inputMessage">Message</label>
             <textarea id="inputMessage" className="form-control" rows="4"></textarea>
           </div>
           <div className="form-group">
