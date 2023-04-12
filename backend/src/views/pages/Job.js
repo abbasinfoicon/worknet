@@ -1,15 +1,42 @@
-import bsCustomFileInput from 'bs-custom-file-input'
-import { CKEditor } from '@ckeditor/ckeditor5-react';
-import React, { useEffect } from 'react'
-import { ClassicEditor } from '@ckeditor/ckeditor5-build-classic';
+import React, { useState } from 'react'
+import Create from '../../components/template/job/Create';
+import View from '../../components/template/job/View';
+import Delete from '../../components/template/job/Delete';
+import Update from '../../components/template/job/Update';
+import { useGetJobQuery } from '../../features/services/jobApi';
+import { ToastContainer } from 'react-toastify';
 
 const Job = () => {
-  useEffect(() => {
-    bsCustomFileInput.init()
-  }, [])
+  const { data: jobData, isLoading, isError, isSuccess, error, } = useGetJobQuery();
+  const [open, setOpen] = useState('');
+  const [uid, setUid] = useState(null);
+  const [sgl, setSgl] = useState([]);
+
+  const openModal = (id, name) => {
+    setOpen("show");
+    document.body.classList.add('modal-open');
+
+    var div = document.createElement('div');
+    div.className = 'modal-backdrop fade show';
+    document.body.appendChild(div);
+
+    setUid(name);
+
+    const sldDet = jobData?.data?.filter((item) => {
+      return item._id === id
+    })
+    setSgl(sldDet);
+  }
+
+  const closeModal = () => {
+    setOpen('');
+    document.body.classList.remove('modal-open');
+    document.querySelectorAll(".modal-backdrop").forEach(el => el.remove())
+  }
 
   return (
     <div className="card">
+      <ToastContainer />
       <div className="card-header">
         <h3 className="card-title">All Details</h3>
 
@@ -22,123 +49,100 @@ const Job = () => {
           </button>
         </div>
       </div>
+
       <div className="add-new p-2 bg-light">
-        <button data-toggle="modal" data-target="#addNew">Add New</button>
-      </div>
-      <div className="card-body p-0">
-        <table className="table table-striped projects">
-          <thead>
-            <tr>
-              <th style={{ width: '1%' }}>#</th>
-              <th style={{ width: '100px' }}>Image</th>
-              <th style={{ width: '25%' }}>Title</th>
-              <th style={{ width: '40%' }}>Content</th>
-              <th>Status</th>
-              <th></th>
-            </tr>
-          </thead>
-          <tbody>
-            <tr>
-              <td>#1</td>
-              <td><img src="https://www.infoicontechnologies.com/uploads/1637903667790-1636715745574-682503085-huge.jpg" alt="india" className="img-fluid Flag" />  </td>
-              <td>Artificial Intelligence and Robotics in Smart City Strategies and Development</td>
-              <td>Call or e-mail our sales department to place an order or for pricing, product information, pre-sales advice and sales information.</td>
-              <th className='text-success'>Success</th>
-              <td className="project-actions text-right">
-                <a className="btn btn-primary btn-sm" href="#"><i className="fas fa-eye"></i></a>
-                <a className="btn btn-info btn-sm mx-2" href="#"><i className="fas fa-pencil-alt"></i></a>
-                <a className="btn btn-danger btn-sm" href="#"><i className="fas fa-trash"></i></a>
-              </td>
-            </tr>
-          </tbody>
-        </table>
+        <button onClick={() => openModal()}>Add New</button>
       </div>
 
-      <div className="modal fade" id="addNew" aria-hidden="true">
+      <div className="card-body p-0">
+        {isError ? (
+          <>Oh no, there was an error</>
+        ) : isLoading ? (
+          <>Loading...</>
+        ) : jobData?.data?.length === 0 ? (
+          <p>Empty Data !!!</p>
+        ) :
+          <table className="table table-striped projects">
+            <thead>
+              <tr>
+                <th style={{ width: '1%' }}>#</th>
+                <th style={{ width: '100px' }}>Image</th>
+                <th style={{ width: '20%' }}>Title</th>
+                <th style={{ width: '20%' }}>Small Desc</th>
+                <th style={{ width: '5%' }}>Reference</th>
+                <th style={{ width: '5%' }}>Department</th>
+                <th style={{ width: '5%' }}>Location</th>
+                <th style={{ width: '5%' }}>Address</th>
+                <th style={{ width: '5%' }}>City</th>
+                <th style={{ width: '5%' }}>Salary</th>
+                <th style={{ width: '5%' }}>Enployment</th>
+                <th>Status</th>
+                <th style={{ width: '10%' }}></th>
+              </tr>
+            </thead>
+            <tbody>
+
+              {
+                jobData?.data?.map((item, i) =>
+                  <tr key={i}>
+                    <td>#{i + 1}</td>
+                    <td><img src={item.img} alt="india" className="img-fluid Flag" />  </td>
+                    <td>{item.title}</td>
+                    <td className="d-flex" dangerouslySetInnerHTML={{ __html: JSON.stringify(item.smallDesc) }}></td>
+                    <td>{item.reference}</td>
+                    <td>{item.department}</td>
+                    <td>{item.location}</td>
+                    <td>{item.address}</td>
+                    <td>{item.city}</td>
+                    <td>{item.salary}</td>
+                    <td>{item.enployment}</td>
+
+                    <td className={`text-${item.status == 'success' ? 'success' : item.status == 'pending' ? 'warning' : 'danger'}`}>{item.status}</td>
+                    <td className="project-actions text-right">
+                      <button onClick={() => openModal(item._id, "view")} className="btn btn-primary btn-sm"><i className="fa fa-eye"></i></button>
+                      <button onClick={() => openModal(item._id, "edit")} className="btn btn-info btn-sm mx-2"><i className="fa fa-edit"></i></button>
+                      <button onClick={() => openModal(item._id, "delete")} className="btn btn-danger btn-sm"><i className="fa fa-trash"></i></button>
+                    </td>
+                  </tr>
+                )
+              }
+
+            </tbody>
+          </table>
+        }
+
+      </div>
+
+      <div className={`modal fade ${open}`} id="addNew">
         <div className="modal-dialog modal-lg">
           <div className="modal-content">
+
             <div className="modal-header">
-              <h4 className="modal-title">Add New</h4>
-              <button type="button" className="close" data-dismiss="modal" aria-label="Close">
-                <span aria-hidden="true">×</span>
+              <h4 className="modal-title">{uid == "view" ? "View Slider" : uid == "edit" ? "Edit Slider" : uid == "delete" ? "Delete Slider" : "Add New"}</h4>
+              <button type="button" className="close" onClick={() => closeModal()}>
+                <span>×</span>
               </button>
             </div>
-            <form>
-              <div className="modal-body">
-                <div className="card-body">
-                  <div className="form-group">
-                    <label>Title</label>
-                    <input type="text" className="form-control" placeholder="Enter Title..." />
-                  </div>
 
-                  <div className="form-group">
-                    <label>Content</label>
-                    <CKEditor editor={ClassicEditor} data="<p>Hello from CKEditor 5!</p>" />
-                  </div>
+            {
+              uid == null &&
+              <Create close={closeModal} />
+            }
 
-                  <div className="row">
-                    <div className="col-md-8">
-                      <div className="form-group">
-                        <label>Upload Image</label>
-                        <div className="input-group">
-                          <div className="custom-file">
-                            <input type="file" name="img" className="custom-file-input" id="file" />
-                            <label className="custom-file-label" htmlFor="file">Choose Image</label>
-                          </div>
-                        </div>
-                      </div>
-                    </div>
+            {
+              uid == "view" &&
+              <View content={sgl} close={closeModal} />
+            }
 
-                    <div className="col-md-4">
-                      <div className="form-group">
-                        <label>Status</label>
-                        <select className="form-control">
-                          <option>Success</option>
-                          <option>Panding</option>
-                          <option>Reject</option>
-                        </select>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              </div>
+            {
+              uid == "edit" &&
+              <Update update={sgl} close={closeModal} />
+            }
 
-              <div className="modal-footer">
-                <button type="button" className="btn btn-default border" data-dismiss="modal">Close</button>
-                <button type="button" className="btn btn-primary"><i className="fas fa-paper-plane"></i> Submit</button>
-              </div>
-            </form>
-
-            <div className="view-data p-3">
-              <div className="row">
-                <div className="col-md-5">
-                  <img src='https://www.infoicontechnologies.com/uploads/1637903667790-1636715745574-682503085-huge.jpg' alt="India" className='img-style img-fluid' />
-                </div>
-
-                <div className="col-md-7">
-                  <h3 className="text-primary">Artificial Intelligence and Robotics in Smart City Strategies and Development</h3>
-                  <p className="text-muted">Call or e-mail our sales department to place an order or for pricing, product information, pre-sales advice and sales information.</p>
-                </div>
-              </div>
-
-              <div className="text-center mt-5 mb-3 d-flex justify-content-center gap-2">
-                <button type="button" className="btn btn-sm btn-default border" data-dismiss="modal">Close</button>
-                <button type="button" className="btn btn-sm btn-primary"><i className="fas fa-paper-plane"></i> Add New</button>
-                <button type="button" className="btn btn-sm btn-warning"><i className="fas fa-paper-plane"></i> Edit</button>
-                <button type="button" className="btn btn-sm btn-info"><i className="fas fa-paper-plane"></i> All Lists</button>
-              </div>
-            </div>
-
-            <div className="delete-modal">
-              <i className="fas fa-times"></i>
-              <h3>Are you sure?</h3>
-              <p>Do you really want to delete these records? This process cannot be undone.</p>
-
-              <div className="action">
-                <button className="btn btn-default border" data-dismiss="modal">Cancel</button>
-                <button className="btn btn-danger">Delete</button>
-              </div>
-            </div>
+            {
+              uid == "delete" &&
+              <Delete content={sgl} close={closeModal} />
+            }
           </div>
         </div>
       </div>

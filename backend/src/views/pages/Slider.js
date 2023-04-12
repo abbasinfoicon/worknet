@@ -2,13 +2,14 @@ import bsCustomFileInput from 'bs-custom-file-input'
 import { CKEditor } from '@ckeditor/ckeditor5-react';
 import ClassicEditor from '@ckeditor/ckeditor5-build-classic';
 import React, { useEffect, useState } from 'react'
-import { useGetSliderQuery, useAddSliderMutation, useDeleteSliderMutation } from '../../features/services/sliderApi'
+import { useGetSliderQuery, useAddSliderMutation, useDeleteSliderMutation, useUpdateSliderMutation } from '../../features/services/sliderApi'
 import { ToastContainer, toast } from 'react-toastify';
 
 const Slider = () => {
   const { data, isError, isLoading } = useGetSliderQuery();
-  const [addPage] = useAddSliderMutation();
-  const [deleteSlider] = useDeleteSliderMutation();
+  const [addSlider, resAdd] = useAddSliderMutation();
+  const [deleteSlider, resDel] = useDeleteSliderMutation();
+  const [updateSlider, resUpd] = useUpdateSliderMutation();
 
   const [uid, setUid] = useState(null);
   const [open, setOpen] = useState('');
@@ -23,30 +24,45 @@ const Slider = () => {
     file: ''
   });
 
-  const handleChange = (e) => {
+  const handleChange = (e, upkey) => {
     if (e.target.id === 'img') {
       var file = e.target.files[0];
       var reader = new FileReader();
       reader.onloadend = function () {
-        setField({ ...field, file: file.name, [e.target.name]: reader.result });
+
+        if (upkey == "update") {
+          setSgl({ ...sgl, file: sgl[0].name, [e.target.name]: reader.result });
+        } else {
+          setField({ ...field, file: file.name, [e.target.name]: reader.result });
+        }
       }
+
       reader.readAsDataURL(file);
     } else {
-      setField({ ...field, [e.target.name]: e.target.value });
+
+      if (upkey == "update") {
+        setSgl({ ...sgl, [e.target.name]: e.target.value });
+      } else {
+        setField({ ...field, [e.target.name]: e.target.value });
+      }
+
     }
 
-    // console.log("handleChange- ", field)
+    if (upkey == "update") {
+      console.log("handleChange Sgl- ", sgl)
+    } else {
+      console.log("handleChange Field- ", field)
+    }
   }
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    const { title, linkText, link, status, img } = field;
 
-    if (title && img) {
+    if (field.title && field.img) {
       field.content = content;
-      const res = await addPage(field);
+      const res = await addSlider(field);
 
-      // console.log("Add Data: ", res);
+      console.log("Add Data: ", res);
       toast.success("Create Data Successfully!!!");
 
       setField({
@@ -65,6 +81,32 @@ const Slider = () => {
       toast.error("All Feild required!!!");
     }
   };
+
+  const handleUpdate = async (e, id) => {
+    e.preventDefault();
+
+    // console.log("id",id)
+
+    field.content = content;
+    let uptdta = sgl[0];
+    const res = await updateSlider(id, uptdta);
+
+    // console.log("update", res)
+
+    toast.success("Update Data Successfully!!!");
+
+    setField({
+      title: '',
+      linkText: '',
+      img: '',
+      link: '',
+      status: '',
+      file: ''
+    });
+    setContent('');
+    document.getElementById('customForm').reset();
+    closeModal();
+  }
 
   const openModal = (id, name) => {
     setOpen("show");
@@ -91,7 +133,7 @@ const Slider = () => {
   const deleteSliderData = (id) => {
     deleteSlider(id);
     closeModal();
-    handleChange();
+    setField(data);
   }
 
   useEffect(() => {
@@ -178,7 +220,7 @@ const Slider = () => {
 
             {
               uid == null &&
-              <form onSubmit={handleSubmit} id="customForm" >
+              <form id="customForm" onSubmit={handleSubmit}>
                 <div className="modal-body">
                   <div className="card-body">
                     <div className="form-group">
@@ -215,12 +257,8 @@ const Slider = () => {
                       <div className="col-md-4">
                         <div className="form-group">
                           <label>Page Link</label>
-                          <select className="form-control" name="link" defaultValue={field.link} onChange={handleChange}>
-                            <option value="bewerberInnen">BewerberInnen</option>
-                            <option value="unternehmen">Unternehmen</option>
-                            <option value="team">Team</option>
-                            <option value="job">Job</option>
-                            <option value="kontakt">Kontakt</option>
+                          <select className="form-control" name="link" value={field.link} onChange={handleChange}>
+                            {["bewerberInnen", "unternehmen", "team", "job", "kontakt"].map((item, i) => <option value={item} key={i}>{item}</option>)}
                           </select>
                         </div>
                       </div>
@@ -228,10 +266,8 @@ const Slider = () => {
                       <div className="col-md-4">
                         <div className="form-group">
                           <label>Status</label>
-                          <select className="form-control" name="status" defaultValue={field.status} onChange={handleChange}>
-                            <option value="success">Success</option>
-                            <option value="pending">Panding</option>
-                            <option value="reject">Reject</option>
+                          <select className="form-control" name="status" value={field.status} onChange={handleChange}>
+                            {["success", "pending", "reject"].map((item, i) => <option value={item} key={i}>{item}</option>)}
                           </select>
                         </div>
                       </div>
@@ -241,143 +277,125 @@ const Slider = () => {
 
                 <div className="modal-footer">
                   <button type="button" className="btn btn-default border" onClick={() => closeModal()}>Close</button>
-                  <button className="btn btn-primary"><i className="fas fa-paper-plane"></i> Submit</button>
+                  <button type='submit' className="btn btn-primary"><i className="fas fa-paper-plane"></i> Submit</button>
                 </div>
               </form>
             }
 
             {
-              uid == "view" && <div className="view-data p-3">
+              uid == "view" &&
+              <div className="view-data p-3">
+                <div className="row">
+                  <div className="col-md-5">
+                    <img src={sgl[0].img} alt="India" className='img-style img-fluid' />
+                  </div>
 
-                {
-                  sgl.map((item, i) => {
-                    return (
-                      <div className="row" key={i}>
-                        <div className="col-md-5">
-                          <img src={item.img} alt="India" className='img-style img-fluid' />
-                        </div>
+                  <div className="col-md-7">
+                    <h3 className="text-primary">{sgl[0].title}</h3>
+                    <p className="text-muted d-flex" dangerouslySetInnerHTML={{ __html: JSON.stringify(sgl[0].content) }}></p>
 
-                        <div className="col-md-7">
-                          <h3 className="text-primary">{item.title}</h3>
-                          <p className="text-muted d-flex" dangerouslySetInnerHTML={{ __html: JSON.stringify(item.content) }}></p>
+                    <div className='d-flex align-items-center'>
+                      <p className='btn btn-primary mr-2'>{sgl[0].linkText}</p>
+                      <p>Page Link:- {sgl[0].link}</p>
+                    </div>
 
-                          <div className='d-flex align-items-center'>
-                            <p className='btn btn-primary mr-2'>{item.linkText}</p>
-                            <p>Page Link:- {item.link}</p>
-                          </div>
-
-                          <p className={`btn btn-${item.status == 'success' ? 'success' : item.status == 'pending' ? 'warning' : 'danger'} mb-0 mr-2`}>{item.status}</p>
-                          <button type="button" className="btn btn-default border" onClick={() => closeModal()}>Close</button>
-                        </div>
-                      </div>
-                    )
-                  })
-                }
-
+                    <p className={`btn btn-${sgl[0].status == 'success' ? 'success' : sgl[0].status == 'pending' ? 'warning' : 'danger'} mb-0 mr-2`}>{sgl[0].status}</p>
+                    <button type="button" className="btn btn-default border" onClick={() => closeModal()}>Close</button>
+                  </div>
+                </div>
               </div>
             }
 
             {
               uid == "edit" &&
-              sgl.map((item, i) => {
-                return (
-                  <form key={i}>
-                    <div className="modal-body">
-                      <div className="card-body">
-                        <div className="form-group">
-                          <label>Title</label>
-                          <input type="text" className="form-control" value={item.title} placeholder="Enter Title..." />
-                        </div>
+              <form>
+                <div className="modal-body">
+                  <div className="card-body">
+                    <div className="form-group">
+                      <label>Title</label>
+                      <input type="text" className="form-control" name='title' value={sgl[0].title} onChange={(e) => handleChange(e, "update")} placeholder="Enter Title..." />
+                    </div>
 
+                    <div className="form-group">
+                      <label>Content</label>
+                      <CKEditor
+                        editor={ClassicEditor}
+                        data={sgl[0].content}
+                        onChange={(event, editor) => {
+                          const data = editor.getData();
+                          setContent(data);
+                        }} />
+                    </div>
+
+                    <div className="row">
+                      <div className="col-md-8">
                         <div className="form-group">
-                          <label>Content</label>
-                          <CKEditor
-                            editor={ClassicEditor}
-                            data={item.content}
-                          />
+                          <label>Upload Image</label>
+                          <div className="input-group">
+                            <div className="custom-file">
+                              <input type="file" name="img" className="custom-file-input" onChange={(e) => handleChange(e, "update")} id="file" />
+                              <label className="custom-file-label" htmlFor="file">Choose Image</label>
+                            </div>
+                          </div>
                         </div>
 
                         <div className="row">
-                          <div className="col-md-8">
+                          <div className="col-md-12">
                             <div className="form-group">
-                              <label>Upload Image</label>
-                              <div className="input-group">
-                                <div className="custom-file">
-                                  <input type="file" name="img" className="custom-file-input" id="file" />
-                                  <label className="custom-file-label" htmlFor="file">Choose Image</label>
-                                </div>
-                              </div>
-                            </div>
-
-                            <div className="row">
-                              <div className="col-md-12">
-                                <div className="form-group">
-                                  <label>Button Text</label>
-                                  <input type="text" name="linkText" value={item.linkText} className="form-control" placeholder="Enter Button Text..." />
-                                </div>
-                              </div>
-
-                              <div className="col-md-6">
-                                <div className="form-group">
-                                  <label>Page Link</label>
-                                  <select className="form-control" name="link" defaultValue={item.link}>
-                                    <option value="bewerberInnen">BewerberInnen</option>
-                                    <option value="unternehmen">Unternehmen</option>
-                                    <option value="team">Team</option>
-                                    <option value="job">Job</option>
-                                    <option value="kontakt">Kontakt</option>
-                                  </select>
-                                </div>
-                              </div>
-
-                              <div className="col-md-6">
-                                <div className="form-group">
-                                  <label>Status</label>
-                                  <select className="form-control" name="status" defaultValue={item.status}>
-                                    <option value="success">Success</option>
-                                    <option value="pending">Panding</option>
-                                    <option value="reject">Reject</option>
-                                  </select>
-                                </div>
-                              </div>
+                              <label>Button Text</label>
+                              <input type="text" name="linkText" value={sgl[0].linkText} onChange={(e) => handleChange(e, "update")} className="form-control" placeholder="Enter Button Text..." />
                             </div>
                           </div>
 
-                          <div className="col-md-4">
+                          <div className="col-md-6">
                             <div className="form-group">
-                              <img src={item.img} className='img-fluid' />
+                              <label>Page Link</label>
+                              <select className="form-control" name="link" value={sgl[0].link} onChange={(e) => handleChange(e, "update")}>
+                                {["bewerberInnen", "unternehmen", "team", "job", "kontakt"].map((item, i) => <option value={item} key={i}>{item}</option>)}
+                              </select>
+                            </div>
+                          </div>
+
+                          <div className="col-md-6">
+                            <div className="form-group">
+                              <label>Status</label>
+                              <select className="form-control" name="status" value={sgl[0].status} onChange={(e) => handleChange(e, "update")}>
+                                {["success", "pending", "reject"].map((item, i) => <option value={item} key={i}>{item}</option>)}
+                              </select>
                             </div>
                           </div>
                         </div>
+                      </div>
 
+                      <div className="col-md-4">
+                        <div className="form-group">
+                          <img src={sgl[0].img} className='img-fluid' />
+                        </div>
                       </div>
                     </div>
 
-                    <div className="modal-footer">
-                      <button type="button" className="btn btn-default border" onClick={() => closeModal()}>Close</button>
-                      <button type="button" className="btn btn-primary"><i className="fas fa-paper-plane"></i> Submit</button>
-                    </div>
-                  </form>
-                )
-              })
+                  </div>
+                </div>
+
+                <div className="modal-footer">
+                  <button type="button" className="btn btn-default border" onClick={() => closeModal()}>Close</button>
+                  <button type="button" onClick={(e) => handleUpdate(e, sgl[0]._id)} className="btn btn-primary"><i className="fas fa-paper-plane"></i> Submit</button>
+                </div>
+              </form>
             }
 
             {
               uid == "delete" &&
-              sgl.map((item, i) => {
-                return (
-                  <div className="delete-modal" key={i}>
-                    <i className="fas fa-times"></i>
-                    <h3>Are you sure?</h3>
-                    <p>Do you really want to delete these records? This process cannot be undone.</p>
+              <div className="delete-modal">
+                <i className="fas fa-times"></i>
+                <h3>Are you sure?</h3>
+                <p>Do you really want to delete these records? This process cannot be undone.</p>
 
-                    <div className="action">
-                      <button className="btn btn-default border" onClick={() => closeModal()}>Cancel</button>
-                      <button className="btn btn-danger" onClick={() => deleteSliderData(item._id)} title={item._id}>Delete</button>
-                    </div>
-                  </div>
-                )
-              })
+                <div className="action">
+                  <button className="btn btn-default border" onClick={() => closeModal()}>Cancel</button>
+                  <button className="btn btn-danger" onClick={() => deleteSliderData(sgl[0]._id)} title={sgl[0]._id}>Delete</button>
+                </div>
+              </div>
             }
           </div>
         </div>
