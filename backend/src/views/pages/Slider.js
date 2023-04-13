@@ -25,45 +25,49 @@ const Slider = () => {
   });
 
   const handleChange = (e, upkey) => {
-    if (e.target.id === 'img') {
-      var file = e.target.files[0];
-      var reader = new FileReader();
-      reader.onloadend = function () {
+    try {
+      if (e.target.id === 'img') {
+        var file = e.target.files[0];
+        var reader = new FileReader();
+
+        console.log("file image", file)
+
+        reader.onloadend = function () {
+          if (upkey == "update") {
+            setSgl({ ...sgl, file: file.name, [e.target.name]: reader.result });
+          } else {
+            setField({ ...field, file: file.name, [e.target.name]: reader.result });
+          }
+        }
+
+        reader.readAsDataURL(file);
+      } else {
 
         if (upkey == "update") {
-          setSgl({ ...sgl, file: sgl[0].name, [e.target.name]: reader.result });
+          setSgl({ ...sgl, [e.target.name]: e.target.value });
         } else {
-          setField({ ...field, file: file.name, [e.target.name]: reader.result });
+          setField({ ...field, [e.target.name]: e.target.value });
         }
       }
 
-      reader.readAsDataURL(file);
-    } else {
-
       if (upkey == "update") {
-        setSgl({ ...sgl, [e.target.name]: e.target.value });
+        console.log("handleChange Sgl- ", sgl)
       } else {
-        setField({ ...field, [e.target.name]: e.target.value });
+        console.log("handleChange Field- ", field)
       }
-
-    }
-
-    if (upkey == "update") {
-      console.log("handleChange Sgl- ", sgl)
-    } else {
-      console.log("handleChange Field- ", field)
+    } catch (error) {
+      console.log('Error occurred while handling input change:', error);
     }
   }
 
-  const handleSubmit = async (e) => {
+  const handleSubmit = async (e, upkey) => {
     e.preventDefault();
 
-    if (field.title && field.img) {
-      field.content = content;
-      const res = await addSlider(field);
-
-      console.log("Add Data: ", res);
-      toast.success("Create Data Successfully!!!");
+    const { title, img, link, status, file } = upkey == 'update' ? sgl : field;
+    if (title && img) {
+      (upkey == 'update' ? sgl : field).content = content;
+      await (upkey == 'update' ? updateSlider(sgl) : addSlider(field));
+      upkey == 'update' ? toast.success("Update Data Successfully!!!") : toast.success("Create Data Successfully!!!");
 
       setField({
         title: '',
@@ -73,6 +77,7 @@ const Slider = () => {
         status: '',
         file: ''
       });
+
       setContent('');
       document.getElementById('customForm').reset();
       closeModal();
@@ -81,32 +86,6 @@ const Slider = () => {
       toast.error("All Feild required!!!");
     }
   };
-
-  const handleUpdate = async (e, id) => {
-    e.preventDefault();
-
-    // console.log("id",id)
-
-    field.content = content;
-    let uptdta = sgl[0];
-    const res = await updateSlider(id, uptdta);
-
-    // console.log("update", res)
-
-    toast.success("Update Data Successfully!!!");
-
-    setField({
-      title: '',
-      linkText: '',
-      img: '',
-      link: '',
-      status: '',
-      file: ''
-    });
-    setContent('');
-    document.getElementById('customForm').reset();
-    closeModal();
-  }
 
   const openModal = (id, name) => {
     setOpen("show");
@@ -240,7 +219,7 @@ const Slider = () => {
                       <label>Upload Image</label>
                       <div className="input-group">
                         <div className="custom-file">
-                          <input type="file" name="img" onChange={handleChange} className="custom-file-input" id="img" />
+                          <input type="file" name="img" onChange={handleChange} className="custom-file-input" id="img" accept="image/png, image/jpeg" />
                           <label className="custom-file-label" htmlFor="file">Choose Image</label>
                         </div>
                       </div>
@@ -308,7 +287,7 @@ const Slider = () => {
 
             {
               uid == "edit" &&
-              <form>
+              <form onSubmit={(e) => handleSubmit(e, "update")}>
                 <div className="modal-body">
                   <div className="card-body">
                     <div className="form-group">
@@ -333,7 +312,7 @@ const Slider = () => {
                           <label>Upload Image</label>
                           <div className="input-group">
                             <div className="custom-file">
-                              <input type="file" name="img" className="custom-file-input" onChange={(e) => handleChange(e, "update")} id="file" />
+                              <input type="file" name="img" className="custom-file-input" onChange={(e) => handleChange(e, "update")} id="file" accept="image/png, image/jpeg" />
                               <label className="custom-file-label" htmlFor="file">Choose Image</label>
                             </div>
                           </div>
@@ -379,7 +358,7 @@ const Slider = () => {
 
                 <div className="modal-footer">
                   <button type="button" className="btn btn-default border" onClick={() => closeModal()}>Close</button>
-                  <button type="button" onClick={(e) => handleUpdate(e, sgl[0]._id)} className="btn btn-primary"><i className="fas fa-paper-plane"></i> Submit</button>
+                  <button type="submit" className="btn btn-primary"><i className="fas fa-paper-plane"></i> Submit</button>
                 </div>
               </form>
             }

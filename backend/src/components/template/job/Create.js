@@ -53,7 +53,7 @@ const Create = ({ close }) => {
     const handleSubmit = async (e) => {
         e.preventDefault();
         const { title, img, smallDesc, reference, department, location, address, city, salary, enployment, merit, working, empBenefits, yourTasks, yourProfile, contact, author, status } = field;
-        if (title) {
+        if (title && img && smallDesc && reference && department && location && address && city) {
             field.content = content;
             const res = await addData(field);
 
@@ -120,7 +120,7 @@ const Create = ({ close }) => {
                         <label>Upload Image</label>
                         <div className="input-group">
                             <div className="custom-file">
-                                <input type="file" name="img" onChange={handleChange} className="custom-file-input" id="img" />
+                                <input type="file" name="img" onChange={handleChange} className="custom-file-input" id="img" accept="image/png, image/jpeg" />
                                 <label className="custom-file-label" htmlFor="file">Choose Image</label>
                             </div>
                         </div>

@@ -86,9 +86,9 @@ const Job = () => {
                 jobData?.data?.map((item, i) =>
                   <tr key={i}>
                     <td>#{i + 1}</td>
-                    <td><img src={item.img} alt="india" className="img-fluid Flag" />  </td>
+                    <td><img src={`//${item.img}`} alt="india" className="img-fluid Flag" />  </td>
                     <td>{item.title}</td>
-                    <td className="d-flex" dangerouslySetInnerHTML={{ __html: JSON.stringify(item.smallDesc) }}></td>
+                    <td className="smdesc" dangerouslySetInnerHTML={{ __html: JSON.stringify(item.smallDesc) }}></td>
                     <td>{item.reference}</td>
                     <td>{item.department}</td>
                     <td>{item.location}</td>

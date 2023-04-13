@@ -87,3 +87,11 @@
 .projects td>p {
     margin: 0;
 }
+
+.projects td.smdesc {
+    display: -webkit-box!important;
+    -webkit-line-clamp: 3;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+    height: 90px;
+}

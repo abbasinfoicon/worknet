@@ -17,7 +17,7 @@ const View = ({ content, close }) => {
         <div className="view-data p-3">
             <div className="row">
                 <div className="col-md-12">
-                    <img src={sgl.img} alt="India" className='img-style img-fluid' />
+                    <img src={`//${sgl.img}`} alt="India" className='img-style img-fluid' />
                 </div>
 
                 <div className="col-md-12">

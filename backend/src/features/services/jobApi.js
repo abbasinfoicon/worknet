@@ -46,7 +46,7 @@ export const jobApi = createApi({
         updateJob: builder.mutation({
             query: (update) => {
 
-                console.log("update data -", update)
+                // console.log("update data -", update)
                 return (
                     {
                         url: `job/${update._id}`,

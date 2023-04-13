@@ -30,9 +30,10 @@ const Update = ({ update, close }) => {
         const { title, img, smallDesc, reference, department, location, address, city, salary, enployment, merit, working, empBenefits, yourTasks, yourProfile, contact, author, status } = sgl;
         if (title && img && smallDesc && reference && department && location && address && city) {
             sgl.content = content;
-            const res = await updateData(sgl);
 
-            toast.success("Create Data Successfully!!!");
+            await updateData(sgl);
+
+            toast.success("Update Data Successfully!!!");
 
             const editorInstance = editorRef.current.editor;
             editorInstance.setData('');
@@ -72,7 +73,7 @@ const Update = ({ update, close }) => {
                         <label>Upload Image</label>
                         <div className="input-group">
                             <div className="custom-file">
-                                <input type="file" name="img" onChange={handleChange} className="custom-file-input" id="img" />
+                                <input type="file" name="img" onChange={handleChange} className="custom-file-input" id="img" accept="image/png, image/jpeg" />
                                 <label className="custom-file-label" htmlFor="file">Choose Image</label>
                             </div>
                         </div>

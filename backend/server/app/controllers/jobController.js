@@ -55,12 +55,13 @@ class jobController {
             const now = Date.now()
             const base64Data = img.replace(/^data:([A-Za-z-+/]+);base64,/, '');
             fs.writeFile("./public/assets/uploads/" + now + '.png', base64Data, 'base64', (err) => {
-                console.log("img-erro ", err);
+                console.log("create-img-erro ", err);
             });
 
             if (title && img && smallDesc && reference && department && location && address && city) {
                 const data = new jobModel({
-                    title, content, smallDesc, reference, department, location, address, city, salary, enployment, merit, working, empBenefits, yourTasks, yourProfile, contact, author, status, slug, img: "/assets/uploads/" + now + '.png',
+                    title, content, smallDesc, reference, department, location, address, city, salary, enployment, merit, working,
+                    empBenefits, yourTasks, yourProfile, contact, author, status, slug, img: req.get('host') + "/assets/uploads/" + now + '.png',
                 });
                 const result = await data.save();
                 res.status(200).send({
@@ -81,7 +82,14 @@ class jobController {
     // UPDATE
     static updateData = async (req, res) => {
         try {
-            
+            const now = Date.now()
+            const base64Data = req.body.img.replace(/^data:([A-Za-z-+/]+);base64,/, '');
+            fs.writeFile("./public/assets/uploads/" + now + '.png', base64Data, 'base64', (err) => {
+                console.log("update-img-erro ", err);
+            });
+
+            req.body.img = req.get('host') + "/assets/uploads/" + now + '.png'
+
             const data = await jobModel.findByIdAndUpdate(req.params.id, req.body);
             if (data) {
                 res.status(200).send({
@@ -103,12 +111,33 @@ class jobController {
     // DELETE
     static deleteData = async (req, res) => {
         const data = await jobModel.findById(req.params.id);
-        const imgdel = "./public" + data.img
+
+        let imgPath = data.img.split('/').slice(1);
+        let imgName = data.img.split('/').pop();
+
+        // Define the path to the image file
+        const imgdel = "./public/" + imgPath.join('/')
+
+        // Check if the image file exists
+        fs.access(imgdel, fs.constants.F_OK, (err) => {
+            if (err) {
+                console.error(`${imgName} does not exist`);
+            } else {
+                // Image file exists, so you can unlink it
+                fs.unlink(imgdel, (err) => {
+                    if (err) {
+                        console.error(`Error unlinking ${imgName}: ${err}`);
+                    } else {
+                        console.log(`${imgName} was deleted`);
+                    }
+                });
+            }
+        });
+
         try {
             const data = await jobModel.findByIdAndDelete(req.params.id, req.body);
 
             if (data) {
-                fs.unlinkSync(imgdel);
                 res.status(200).send({
                     status: 'success',
                     message: "Delete data Successful!!!",
