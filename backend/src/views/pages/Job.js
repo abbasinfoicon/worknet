@@ -67,15 +67,13 @@ const Job = () => {
               <tr>
                 <th style={{ width: '1%' }}>#</th>
                 <th style={{ width: '100px' }}>Image</th>
-                <th style={{ width: '20%' }}>Title</th>
-                <th style={{ width: '20%' }}>Small Desc</th>
-                <th style={{ width: '5%' }}>Reference</th>
-                <th style={{ width: '5%' }}>Department</th>
-                <th style={{ width: '5%' }}>Location</th>
-                <th style={{ width: '5%' }}>Address</th>
-                <th style={{ width: '5%' }}>City</th>
-                <th style={{ width: '5%' }}>Salary</th>
-                <th style={{ width: '5%' }}>Enployment</th>
+                <th style={{ width: '10%' }}>Title</th>
+                <th style={{ width: '20%' }}>Content</th>
+                <th>Reference</th>
+                <th>Department</th>
+                <th>City</th>
+                <th>Salary</th>
+                <th>Enployment</th>
                 <th>Status</th>
                 <th style={{ width: '10%' }}></th>
               </tr>
@@ -88,11 +86,9 @@ const Job = () => {
                     <td>#{i + 1}</td>
                     <td><img src={`//${item.img}`} alt="india" className="img-fluid Flag" />  </td>
                     <td>{item.title}</td>
-                    <td className="smdesc" dangerouslySetInnerHTML={{ __html: JSON.stringify(item.smallDesc) }}></td>
+                    <td className="smdesc" dangerouslySetInnerHTML={{ __html: JSON.stringify(item.content) }}></td>
                     <td>{item.reference}</td>
                     <td>{item.department}</td>
-                    <td>{item.location}</td>
-                    <td>{item.address}</td>
                     <td>{item.city}</td>
                     <td>{item.salary}</td>
                     <td>{item.enployment}</td>

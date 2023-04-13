@@ -28,7 +28,6 @@ const Create = ({ close }) => {
         contact: "",
         author: "",
         status: "pending",
-        file: ""
     });
 
     const handleChange = (e) => {

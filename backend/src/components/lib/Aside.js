@@ -1,7 +1,16 @@
 import React from 'react'
 import { Link, NavLink } from 'react-router-dom'
+import { useGetJobQuery } from '../../features/services/jobApi';
+import { useGetSliderQuery } from '../../features/services/sliderApi';
 
 const Aside = () => {
+    const jobData = useGetJobQuery();
+    const sliderData = useGetSliderQuery();
+
+    const jobLength = jobData?.data?.data?.length;
+    const sliderLength = sliderData?.data?.data?.length;
+
+
     return (
         <aside className="main-sidebar sidebar-dark-primary elevation-4">
             <Link to="/dashboard" className="brand-link">
@@ -92,13 +101,13 @@ const Aside = () => {
                         <li className="nav-item">
                             <NavLink to="/slider" className="nav-link">
                                 <i className="nav-icon fas fa-sliders-h"></i>
-                                <p> Hero Slider <span className="badge badge-info right">6</span></p>
+                                <p> Hero Slider <span className="badge badge-info right">{sliderLength}</span></p>
                             </NavLink>
                         </li>
                         <li className="nav-item">
                             <NavLink to="/job" className="nav-link">
                                 <i className="nav-icon far fa-calendar-alt"></i>
-                                <p> Jobs <span className="badge badge-info right">6</span></p>
+                                <p> Jobs <span className="badge badge-info right">{jobLength}</span></p>
                             </NavLink>
                         </li>
 

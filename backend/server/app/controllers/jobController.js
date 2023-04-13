@@ -43,7 +43,7 @@ class jobController {
     // CREATE DATA
     static addData = async (req, res) => {
         try {
-            const { title, content, img, smallDesc, reference, department, location, address, city, salary, enployment, merit, working, empBenefits, yourTasks, yourProfile, contact, author, status } = req.body;
+            const { title, content, img, file, smallDesc, reference, department, location, address, city, salary, enployment, merit, working, empBenefits, yourTasks, yourProfile, contact, author, status } = req.body;
 
             const slug = slugify(title, {
                 lower: true, // convert to lowercase
@@ -61,7 +61,7 @@ class jobController {
             if (title && img && smallDesc && reference && department && location && address && city) {
                 const data = new jobModel({
                     title, content, smallDesc, reference, department, location, address, city, salary, enployment, merit, working,
-                    empBenefits, yourTasks, yourProfile, contact, author, status, slug, img: req.get('host') + "/assets/uploads/" + now + '.png',
+                    empBenefits, yourTasks, yourProfile, contact, author, status, slug, file, img: req.get('host') + "/assets/uploads/" + now + '.png',
                 });
                 const result = await data.save();
                 res.status(200).send({
@@ -87,10 +87,12 @@ class jobController {
             fs.writeFile("./public/assets/uploads/" + now + '.png', base64Data, 'base64', (err) => {
                 console.log("update-img-erro ", err);
             });
-
             req.body.img = req.get('host') + "/assets/uploads/" + now + '.png'
 
             const data = await jobModel.findByIdAndUpdate(req.params.id, req.body);
+            
+            console.log("updated data-", data)
+
             if (data) {
                 res.status(200).send({
                     status: 'success',

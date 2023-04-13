@@ -19,10 +19,21 @@ const Update = ({ update, close }) => {
                 setSgl({ ...sgl, file: file.name, [e.target.name]: reader.result });
             }
 
+            console.log("file", file)
             reader.readAsDataURL(file);
         } else {
             setSgl({ ...sgl, [e.target.name]: e.target.value });
         }
+    }
+
+    const handleContent = (e, editor) => {
+        console.log("content editor-", editor)
+        console.log("content editor-", editor.getData())
+
+        const data = editor.getData();
+        setContent(data);
+
+        // console.log("content data-", data)
     }
 
     const handleSubmit = async (e) => {
@@ -66,7 +77,7 @@ const Update = ({ update, close }) => {
 
                     <div className="form-group">
                         <label>Content</label>
-                        <CKEditor editor={ClassicEditor} data={sgl.content} ref={editorRef} onChange={(e, editor) => { const data = editor.getData(); setContent(data); }} />
+                        <CKEditor editor={ClassicEditor} data={sgl.content} ref={editorRef} onChange={(e, editor) => handleContent(e, editor)} />
                     </div>
 
                     <div className="form-group">
@@ -74,7 +85,7 @@ const Update = ({ update, close }) => {
                         <div className="input-group">
                             <div className="custom-file">
                                 <input type="file" name="img" onChange={handleChange} className="custom-file-input" id="img" accept="image/png, image/jpeg" />
-                                <label className="custom-file-label" htmlFor="file">Choose Image</label>
+                                <label className="custom-file-label" htmlFor="file">{sgl.file}</label>
                             </div>
                         </div>
                     </div>

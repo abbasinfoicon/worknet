@@ -7,6 +7,7 @@ const jobSchema = new mongoose.Schema(
         slug: { type: String },
         content:{type: String},
         img: { type: String, required: true },
+        file: { type: String },
         smallDesc: { type: String, required: true },
         reference: { type: String, required: true },
         department: { type: String, required: true },
@@ -22,7 +23,7 @@ const jobSchema = new mongoose.Schema(
         yourProfile: { type: String },
         contact: { type: String },
         author: { type: String },
-        status: { type: String }
+        status: { type: String },
     },
     {
         timestamps: true,
