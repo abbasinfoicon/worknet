@@ -51,13 +51,14 @@ const Create = ({ close }) => {
 
     const handleSubmit = async (e) => {
         e.preventDefault();
-        const { title, img, smallDesc, reference, department, location, address, city, salary, enployment, merit, working, empBenefits, yourTasks, yourProfile, contact, author, status } = field;
-        if (title && img && smallDesc && reference && department && location && address && city) {
-            field.content = content;
-            const res = await addData(field);
+        
+        field.content = content;
+        const res = await addData(field);
 
-            // console.log("field-", field)
-            toast.success("Create Data Successfully!!!");
+        console.log(res)
+
+        if (typeof (res.data) !== 'undefined' && res.data.status === 'Success') {
+            toast.success(res.data.message);
 
             setField({
                 title: "",
@@ -85,10 +86,8 @@ const Create = ({ close }) => {
 
             document.getElementById('customForm').reset();
             close();
-
-
         } else {
-            toast.error("All Feild required!!!");
+            toast.error(res.error.data.message);
         }
     };
 

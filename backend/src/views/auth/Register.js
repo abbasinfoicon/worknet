@@ -8,7 +8,10 @@ import { Link } from 'react-router-dom';
 
 const Register = () => {
   let navigate = useNavigate();
-  const [addUser] = useAddUserMutation()
+  
+  const [fileInputKey, setFileInputKey] = useState(0);
+  const [isSubmitting, setIsSubmitting] = useState(false);
+  const [addUser, { error }] = useAddUserMutation()
 
   const [data, setData] = useState({
     name: "",
@@ -25,6 +28,7 @@ const Register = () => {
       setData({ ...data, [e.target.name]: e.target.checked });
     } else if (e.target.id === 'img') {
       setData({ ...data, [e.target.name]: e.target.files[0] });
+      setFileInputKey((prev) => prev + 1);
     } else {
       setData({ ...data, [e.target.name]: e.target.value });
     }
@@ -105,7 +109,7 @@ const Register = () => {
 
       <div className="input-group mb-3">
         <div className="custom-file">
-          <input type="file" className="custom-file-input" name="img" onChange={handleChange} id="img" />
+          <input key={fileInputKey} type="file" className="custom-file-input" name="img" onChange={handleChange} id="img" accept="image/png, image/jpeg" />
           <label className="custom-file-label" htmlFor="img">Choose Image</label>
         </div>
         <div className="input-group-text">

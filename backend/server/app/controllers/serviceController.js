@@ -1,13 +1,12 @@
 import moment from "moment/moment.js";
 import fs from "fs"
-import slugify from "slugify";
-import jobModel from "../models/jobModel.js";
+import serviceModel from "../models/serviceModel.js";
 
-class jobController {
+class serviceController {
     // ALL DATA
     static getAllData = async (req, res) => {
         try {
-            const data = await jobModel.find();
+            const data = await serviceModel.find();
 
             res.send({
                 data: data,
@@ -22,7 +21,7 @@ class jobController {
     // READ SINGLE DATA
     static singleData = async (req, res) => {
         try {
-            const data = await jobModel.findById(req.params.id, req.body);
+            const data = await serviceModel.findById(req.params.id, req.body);
             if (data) {
                 res.status(200).send({
                     status: 'success',
@@ -43,12 +42,7 @@ class jobController {
     // CREATE DATA
     static addData = async (req, res) => {
         try {
-            const { title, content, img, file, smallDesc, reference, department, location, address, city, salary, enployment, merit, working, empBenefits, yourTasks, yourProfile, contact, author, status } = req.body;
-
-            const slug = slugify(title, {
-                lower: true, // convert to lowercase
-                strict: true // remove characters that are not URL-friendly
-            });
+            const { title, subtitle, content, img, file, link, linkTxt, status } = req.body;
 
             const now = Date.now()
             const base64Data = img.replace(/^data:([A-Za-z-+/]+);base64,/, '');
@@ -56,11 +50,8 @@ class jobController {
                 console.log("create-img-erro ", err);
             });
 
-            if (title && img && smallDesc && reference && department && location && address && city) {
-                const data = new jobModel({
-                    title, content, smallDesc, reference, department, location, address, city, salary, enployment, merit, working,
-                    empBenefits, yourTasks, yourProfile, contact, author, status, slug, file, img: req.get('host') + "/assets/uploads/" + now + '.png',
-                });
+            if (title && img && content && subtitle) {
+                const data = new serviceModel({ title, subtitle, content, img, link, linkTxt, status, file, img: req.get('host') + "/assets/uploads/" + now + '.png', });
                 const result = await data.save();
                 res.status(200).send({
                     status: "Success",
@@ -88,7 +79,7 @@ class jobController {
                 });
                 req.body.img = req.get('host') + "/assets/uploads/" + now + '.png'
             }
-            const data = await jobModel.findByIdAndUpdate(req.params.id, req.body);
+            const data = await serviceModel.findByIdAndUpdate(req.params.id, req.body);
 
             if (data) {
                 res.status(200).send({
@@ -109,7 +100,7 @@ class jobController {
 
     // DELETE
     static deleteData = async (req, res) => {
-        const data = await jobModel.findById(req.params.id);
+        const data = await serviceModel.findById(req.params.id);
 
         let imgPath = data.img.split('/').slice(1);
         let imgName = data.img.split('/').pop();
@@ -134,7 +125,7 @@ class jobController {
         });
 
         try {
-            const data = await jobModel.findByIdAndDelete(req.params.id, req.body);
+            const data = await serviceModel.findByIdAndDelete(req.params.id, req.body);
 
             if (data) {
                 res.status(200).send({
@@ -154,4 +145,4 @@ class jobController {
     };
 }
 
-export default jobController;
+export default serviceController;

@@ -80,18 +80,30 @@
     background-color: transparent !important;
     color: #c2c7d0 !important;
 }
+
 .main-sidebar .menu-open>a.active {
     background-color: #007bff !important;
     color: #fff !important;
 }
+
 .projects td>p {
     margin: 0;
 }
 
 .projects td.smdesc {
-    display: -webkit-box!important;
+    display: -webkit-box !important;
     -webkit-line-clamp: 3;
     -webkit-box-orient: vertical;
     overflow: hidden;
     height: 90px;
+}
+
+.projects td span {
+    font-size: 75%;
+    display: block;
+    color: #000;
+}
+
+.projects td.project-actions {
+    width: 150px;
 }

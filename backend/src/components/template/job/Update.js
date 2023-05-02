@@ -6,10 +6,9 @@ import { useUpdateJobMutation } from '../../../features/services/jobApi';
 import { toast } from 'react-toastify';
 
 const Update = ({ update, close }) => {
-    const [updateData, resUpd] = useUpdateJobMutation()
+    const [updateData] = useUpdateJobMutation()
     const [sgl, setSgl] = useState(update[0])
-    const [content, setContent] = useState('')
-    const editorRef = useRef(null);
+    const [content, setContent] = useState(update[0].content)
 
     const handleChange = (e) => {
         if (e.target.id === 'img') {
@@ -18,8 +17,6 @@ const Update = ({ update, close }) => {
             reader.onloadend = function () {
                 setSgl({ ...sgl, file: file.name, [e.target.name]: reader.result });
             }
-
-            console.log("file", file)
             reader.readAsDataURL(file);
         } else {
             setSgl({ ...sgl, [e.target.name]: e.target.value });
@@ -27,32 +24,23 @@ const Update = ({ update, close }) => {
     }
 
     const handleContent = (e, editor) => {
-        console.log("content editor-", editor)
-        console.log("content editor-", editor.getData())
-
         const data = editor.getData();
         setContent(data);
-
-        // console.log("content data-", data)
     }
 
     const handleSubmit = async (e) => {
         e.preventDefault();
-        const { title, img, smallDesc, reference, department, location, address, city, salary, enployment, merit, working, empBenefits, yourTasks, yourProfile, contact, author, status } = sgl;
-        if (title && img && smallDesc && reference && department && location && address && city) {
-            sgl.content = content;
 
-            await updateData(sgl);
+        const obj = { ...sgl }
+        obj.content = content;
+        const res = await updateData(obj);
 
-            toast.success("Update Data Successfully!!!");
-
-            const editorInstance = editorRef.current.editor;
-            editorInstance.setData('');
-            document.getElementById('customForm').reset();
+        if (typeof (res.data) !== 'undefined' && res.data.status === 'Success') {
+            toast.success(res.data.message);
             close();
 
         } else {
-            toast.error("All Feild required!!!");
+            toast.error(res.error.data.message);
         }
     };
 
@@ -77,7 +65,7 @@ const Update = ({ update, close }) => {
 
                     <div className="form-group">
                         <label>Content</label>
-                        <CKEditor editor={ClassicEditor} data={sgl.content} ref={editorRef} onChange={(e, editor) => handleContent(e, editor)} />
+                        <CKEditor editor={ClassicEditor} data={sgl.content} onChange={(e, editor) => handleContent(e, editor)} />
                     </div>
 
                     <div className="form-group">

@@ -2,54 +2,54 @@
 import { createApi, fetchBaseQuery } from "@reduxjs/toolkit/query/react";
 
 // Define a service using a base URL and expected endpoints
-export const jobApi = createApi({
-    reducerPath: "jobApi",
+export const serviceApi = createApi({
+    reducerPath: "serviceApi",
     baseQuery: fetchBaseQuery({ baseUrl: "http://127.0.0.1:3004/api/" }),
-    tagTypes: ["Job"],
+    tagTypes: ["Service"],
     endpoints: (builder) => ({
         // all data show
-        getJob: builder.query({
+        getData: builder.query({
             query: () => ({
-                url: "job",
+                url: "service",
                 method: "GET"
             }),
             // transformResponse: (res) => res.reverse(),
-            providesTags: ["Job"] //refresh page
+            providesTags: ["Service"] //refresh page
         }),
 
         // only single data
-        getSingleJob: builder.query({
+        getSingleData: builder.query({
             query: (id) => {
                 // console.log("single -", id)
                 return ({
-                    url: `job/${id}`,
+                    url: `service/${id}`,
                     method: 'GET'
                 })
             },
-            invalidatesTags: ["Job"],
+            invalidatesTags: ["Service"],
         }),
 
         // add data 
-        addJob: builder.mutation({
+        addData: builder.mutation({
             query: (body) => ({
-                url: "job",
+                url: "service",
                 method: "POST",
                 headers: {
                     'Content-Type': 'application/json'
                 },
                 body: body,
             }),
-            invalidatesTags: ["Job"] // invalid tag page getall data show
+            invalidatesTags: ["Service"] // invalid tag page getall data show
         }),
 
         // update data
-        updateJob: builder.mutation({
+        updateData: builder.mutation({
             query: (update) => {
 
                 // console.log("Frendend update data -", update)
                 return (
                     {
-                        url: `job/${update._id}`,
+                        url: `service/${update._id}`,
                         method: "PUT",
                         headers: {
                             'Content-Type': 'application/json'
@@ -58,20 +58,20 @@ export const jobApi = createApi({
                     }
                 )
             },
-            invalidatesTags: ["Job"]
+            invalidatesTags: ["Service"]
         }),
 
         // delete data
-        deleteJob: builder.mutation({
+        deleteData: builder.mutation({
             query: (id) => ({
-                url: `job/${id}`,
+                url: `service/${id}`,
                 method: "DELETE",
             }),
-            invalidatesTags: ["Job"]
+            invalidatesTags: ["Service"]
         }),
     }),
 });
 
 // Export hooks for usage in functional components, which are
 // auto-generated based on the defined endpoints
-export const { useGetJobQuery, useAddJobMutation, useGetSingleJobQuery, useDeleteJobMutation, useUpdateJobMutation } = jobApi;
+export const { useGetDataQuery, useAddDataMutation, useGetSingleDataQuery, useDeleteDataMutation, useUpdateDataMutation } = serviceApi;
